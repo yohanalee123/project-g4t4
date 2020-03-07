@@ -213,33 +213,30 @@
               if (!courses || !courses.length) {
                 showError('Courses list empty or undefined.')
               } else {
-                
+                alert("hi yohana")
                 // for loop to setup all table rows with obtained book data
                 var rows = "";
-                
+                var i = 1
                 for (const course of courses) {
                   
                   console.log(course.CourseName)
-                  print("HIHI")
 
-                  
-                
-
-                     
-
-                  
-                  "<div class=\"col-lg-4 col-sm-6 mb-5\">" +
-                    "<article class=\"text-center\">" +
-                      "<img class=\"img-fluid mb-4\" src=\"images/masonary-post/post-1.jpg\" alt=\"post-thumb\">" +
-                        "<p class=\"text-uppercase mb-2\">" + course.CourseType + "</p>" +
-                        "<h4 class=\"title-border\"><a class=\"text-dark\" href=\"blog-single.html\">" + course.CourseName + "</a></h4>" +
-                        "<p>" + course.CourseInfo + "</p>" + 
-                        "<a href=\"blog-single.html\" class=\"btn btn-transparent\">read more</a>" +
-                          "</article>" +
-                          "</div>";
-
-                       
+                  eachRow =
+                            "<div class=\"col-lg-4 col-sm-6 mb-5\">" +
+                              "<article class=\"text-center\">" +
+                                "<img class=\"img-fluid mb-4\" src=\"images/masonary-post/post-" + i + ".jpg\" alt=\"post-thumb\">" +
+                                "<p class=\"text-uppercase mb-2\">" + course.CourseType + "</p>" +
+                                "<h4 class=\"title-border\"><a class=\"text-dark\" href=\"blog-single.html\">" + course.CourseName + "</a></h4>" +
+                                "<p>" + course.CourseInfo + "</p>" + 
+                                "<a href=\"blog-single.html\" class=\"btn btn-transparent\">read more</a>" +
+                              "</article>" +
+                            "</div>"
+                  // console.log(eachRow)
+                  //document.getElementById('test').innerHTML = eachRow
+                  rows += eachRow
+                  i += 1
                   }
+                  document.getElementById('test').innerHTML = rows
                   // add all the rows to the table
                   //$('#booksTable').append(rows);
               }
