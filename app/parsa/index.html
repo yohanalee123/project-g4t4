@@ -176,23 +176,21 @@
   <section class="section">
     <div class="container">
       <div class="row masonry-container">
-        
-
-        
+        <p id = 'courses'></p>
 
         <script>
-          // Helper function to display error message
+          // // Helper function to display error message
           
-          function showError(message) {
-            // Hide the table and button in the event of error
-            $('#booksTable').hide();
-            $('#addBookBtn').hide();
+          // function showError(message) {
+          //   // Hide the table and button in the event of error
+          //   $('#booksTable').hide();
+          //   $('#addBookBtn').hide();
 
-            // Display an error under the main container
-            $('#container')
-              .append("<label>" + message + "</label>");
+          //   // Display an error under the main container
+          //   $('#container')
+          //     .append("<label>" + message + "</label>");
               
-          }
+          // }
 
           // anonymous async function 
           // - using await requires the function that calls it to be async
@@ -208,7 +206,6 @@
               const data = await response.json();
               var courses = data.courses; //the arr is in data.books of the JSON data
               
-
               // array or array.length are falsy
               if (!courses || !courses.length) {
                 showError('Courses list empty or undefined.')
@@ -231,22 +228,20 @@
                                 "<a href=\"blog-single.html\" class=\"btn btn-transparent\">read more</a>" +
                               "</article>" +
                             "</div>"
-                  // console.log(eachRow)
+                  console.log(eachRow)
                   //document.getElementById('test').innerHTML = eachRow
                   rows += eachRow
                   i += 1
                   }
-                  document.getElementById('test').innerHTML = rows
+                  document.getElementById('courses').innerHTML = rows
                   // add all the rows to the table
                   //$('#booksTable').append(rows);
               }
             } catch (error) {
-                        
                         // Errors when calling the service; such as network error, 
                         // service offline, etc
                         showError
-                          ('There is a problem retrieving books data, please try again later.<br />' + error);
-                      
+                          ('There is a problem retrieving course data, please try again later.<br />' + error);
                       } // error
                   });
         </script>
