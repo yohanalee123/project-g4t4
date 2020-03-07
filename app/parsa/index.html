@@ -174,9 +174,8 @@
 
   <!-- blog post -->
   <section class="section">
-    <div class="container">
+    <div id = "container" class="container">
       <div id = 'courses' class="row masonry-container">
-
         <script>
           // // Helper function to display error message
           
@@ -212,7 +211,7 @@
                 for (const course of courses) {
                   console.log(course.CourseName)
 
-                  eachRow = "<div id = class=\"col-lg-4 col-sm-6 mb-5\">" +
+                  eachRow = "<div class=\"col-lg-4 col-sm-6 mb-5\">" +
                               "<article class=\"text-center\">" +
                                 "<img class=\"img-fluid mb-4\" src=\"images/masonary-post/post-" + i + ".jpg\" alt=\"post-thumb\">" +
                                 "<p class=\"text-uppercase mb-2\">" + course.CourseType + "</p>" +
@@ -223,11 +222,12 @@
                             "</div>"
 
                   console.log(eachRow)
-                  //document.getElementById('test').innerHTML = eachRow
                   rows += eachRow
                   i += 1
                 }
-                document.getElementById('courses').innerHTML = rows
+                console.log(rows)
+                // document.getElementById('courses').innerHTML = rows
+                $('#courses').append(rows);
                 // print all the course listings
                 //$('#booksTable').append(rows);
               }
