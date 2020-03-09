@@ -172,6 +172,24 @@
   <!-- /featured post -->
   <!-- blog post -->
   
+<div id="main-container" class="container">
+    <h1 class="display-4">Add Course</h1>
+        Course Name: <input name="CourseName" type="text" id = "title">
+        Course Type: <input name="CourseType" type="text" id="isbn13">
+        Course Info: <input name="CourseInfo" type="text" id="price">
+    <button id = "submit" type="submit" class="btn btn-primary">Add Course</button>  
+
+    <!-- <table id="booksTable" class='table table-striped' border='1'>
+        <thead class='thead-dark'>
+            <tr>
+                <th>Title</th>
+                <th>ISBN 13</th>
+                <th>Price</th>
+                <th>Availability</th>
+            </tr>
+        </thead>
+    </table> -->
+</div>
   
 <section class="section">
   <div class="container" >
@@ -320,6 +338,61 @@
 
   <!-- Main Script -->
   <script src="js/script.js"></script>
+
+  <!-- <script>
+    // Helper function to display error message
+    function showError(message) {
+        // Hide the table and button in the event of error
+        $('#booksTable').hide();
+        $('#addBookBtn').hide();
+   
+        // Display an error under the main container
+        $('#main-container')
+            .append("<label>"+message+"</label>");
+    }
+ 
+    // anonymous async function 
+    // - using await requires the function that calls it to be async
+    $("#submit").click(function() {           
+
+        event.preventDefault();
+
+        $("#error").hide();
+
+        $(async() =>
+        {
+            
+        // Change serviceURL to your own
+        var CourseName= $('#CourseName').val();
+        var CourseType = $('#CourseType').val();
+        var CourseInfo = $('#CourseInfo').val();
+        var serviceURL = "http://127.0.0.1:5000/course" + "/" + isbnNumber;
+        console.log(serviceURL);
+        try {
+            const response =
+             await fetch(
+                serviceURL, 
+                { 
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify
+                ({ title: Title, price: Price,
+                 availability: Availability })
+            });
+            console.log(response)
+            const data = await response.json();
+            console.log(data)
+            location.reload(true)
+        } catch (error) {
+            // Errors when calling the service; such as network error, 
+            // service offline, etc
+            showError
+            ('There is a problem adding the book, please try again later.<br />'+ error);
+       
+    } // error
+    })
+});
+</script> -->
 
 </body>
 
