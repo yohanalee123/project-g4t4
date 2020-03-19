@@ -3,11 +3,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
+# rename database name if needed
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/course'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 db = SQLAlchemy(app)
-CORS(app)
+
 
 class Course(db.Model):
     __tablename__ = 'course'
@@ -19,7 +22,7 @@ class Course(db.Model):
     Price = db.Column(db.Float(precision=2), nullable=False)
     Availability = db.Column(db.String(2048), nullable=True)
 
-    def __init__(self,CourseID, CourseName, CourseInfo, Price, Availability):
+    def __init__(self,CourseID, CourseName, CourseInfo, CourseType, Price, Availability):
         self.CourseID = CourseID
         self.CourseName = CourseName
         self.CourseInfo = CourseInfo
@@ -41,9 +44,9 @@ def find_by_CourseID(CourseID):
         return jsonify(course.json())
     return jsonify({"message": "Course not found."}), 404
 
-@app.route("/course/<string:CourseType>")
-def find_by_CourseType(CourseType):
-    return jsonify({"courses": [course.json() for course in Course.query.filter_by(CourseType=CourseType)]})
+# @app.route("/course/<string:CourseType>")
+# def find_by_CourseType(CourseType):
+#     return jsonify({"courses": [course.json() for course in Course.query.filter_by(CourseType=CourseType)]})
  
 @app.route("/course/<int:CourseID>", methods=['POST'])
 def create_course(CourseID):
