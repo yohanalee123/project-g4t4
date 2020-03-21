@@ -31,7 +31,7 @@ def receiveBooking():
 
 def callback(channel, method, properties, body): # required signature for the callback; no return
     print("Received a booking by " + __file__)
-    result = processOrder(json.loads(body))
+    result = processBooking(json.loads(body))
     # print processing result; not really needed
     json.dump(result, sys.stdout, default=str) # convert the JSON object to a string and print out on screen
     print() # print a new line feed to the previous json dump
