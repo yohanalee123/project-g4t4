@@ -154,6 +154,14 @@ crossorigin="anonymous">
 <h5>View courses available</h5>
 <div id="main-container" class="container">
   <!-- <h1 class="display-4">Book Listing</h1> -->
+  <button id = "submit2" type="submit" class="btn btn-primary">Show all Courses</button> 
+  <button id = "submit" type="submit" class="btn btn-primary">Search for Course</button>        
+  <input name="CourseID" type="text" id="CourseID">
+        
+        
+         
+        
+
   <table id="courseTable" class='table table-striped' border='1'>
       <thead class='thead-dark'>
           <tr>
@@ -173,11 +181,17 @@ crossorigin="anonymous">
   // Helper function to display error message
   function showError(message) {
       // Hide the table and button in the event of error
-      // $('#courseTable').hide();
+      $('#courseTable').hide();
       // Display an error under the main container
       $('#main-container')
           .append("<label>"+message+"</label>");
   }
+
+  $("#submit2").click(function() {           
+
+event.preventDefault();
+
+$("#error").hide();
 
   // anonymous async function 
   // - using await requires the function that calls it to be async
@@ -191,6 +205,7 @@ crossorigin="anonymous">
              serviceURL, { method: 'GET' }
           );
           const data = await response.json();
+          $("#courseTable").find("tbody").empty();
           var courses = data.courses; 
 
           // array or array.length are falsy
@@ -220,7 +235,68 @@ crossorigin="anonymous">
           showError
           ('There is a problem retrieving course data, please try again later.<br />'+error);
   } // error
+})
+  });
+</script>
+
+<script>
+  // Helper function to display error message
+  function showError(message) {
+      // Hide the table and button in the event of error
+      $('#courseTable').hide();
+      $('#SearchCourseBtn').hide();
+
+      // Display an error under the main container
+      $('#main-container')
+          .append("<label>"+message+"</label>");
+  }
+
+  // anonymous async function 
+  // - using await requires the function that calls it to be async
+  $("#submit").click(function() {           
+
+      event.preventDefault();
+
+      $("#error").hide();
+
+      $(async() =>
+      {
+          
+      // Change serviceURL to your own
+      var CourseID = $('#CourseID').val();
+      console.log(CourseID);
+      var serviceURL = "http://127.0.0.1:5000/course" + "/" + CourseID;
+      console.log(serviceURL);
+      try {
+          const response =
+           await fetch(
+             serviceURL, { method: 'GET' }
+          );
+          console.log(response)
+          const course = await response.json();
+          $("#courseTable").find("tbody").empty();
+          console.log(course)
+          if (response.ok){
+              foundcourse = "<tbody><tr>" + 
+                      "<td>" + course.CourseID + "</td>" +
+                      "<td>" + course.CourseName + "</td>" +
+                      "<td>" + course.CourseInfo + "</td>" +
+                      "<td>" + course.CourseType + "</td>" +
+                      "<td>" + course.Price + "</td>" +
+                      "<td>" + course.Availability + "</td>" +
+                          "</tr></tbody>";
+          } 
+          $('#courseTable').append(foundcourse);
+      } catch (error) {
+          // Errors when calling the service; such as network error, 
+          // service offline, etc
+          showError
+          ('There is a problem retrieving the specific course, please try again later.<br />'+ error);
+     
+  } // error
+      })
 });
+
 </script>
 
 <!-- /blog post -->
