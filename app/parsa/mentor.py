@@ -62,7 +62,7 @@ def processBooking(booking):
     print(booking)
     # Can do anything here. E.g., publish a message to the error handler when processing fails.
     resultstatus = bool(random.getrandbits(1)) # simulate success/failure with a random True or False
-    result = {'status': resultstatus, 'message': 'Simulated random shipping result.', 'booking': booking}
+    result = {'status': resultstatus, 'message': 'Simulated random booking result.', 'booking': booking}
     resultmessage = json.dumps(result, default=str) # convert the JSON object to a string
     if not resultstatus: # inform the error handler when shipping fails
         print("Failed booking.")
@@ -82,5 +82,5 @@ def processBooking(booking):
 #     )
 
 if __name__ == "__main__":  # execute this program only if it is run as a script (not by 'import')
-    print("This is " + os.path.basename(__file__) + ": booking received from use...")
-    receiveOrder()
+    print("This is " + os.path.basename(__file__) + ": booking received from user...")
+    receiveBooking()
