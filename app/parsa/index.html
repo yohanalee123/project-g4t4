@@ -155,10 +155,8 @@ crossorigin="anonymous">
 <div id="main-container" class="container">
   <!-- <h1 class="display-4">Book Listing</h1> -->
   <button id = "submit2" type="submit" class="btn btn-primary">Show all Courses</button> 
-  <button id = "submit" type="submit" class="btn btn-primary">Search for Course</button>        
-  <input name="CourseID" type="text" id="CourseID">
-  <button id = "submit3" type="submit" class="btn btn-primary">Search for Course Test</button>        
-  <input name="CourseName" type="text" id="CourseName">
+  <button id = "submit3" type="submit" class="btn btn-primary">Search for Course</button>        
+  <input name="CourseName" type="text" id="CourseName" placeholder="cooking, php etc.">
         
         
          
@@ -241,7 +239,7 @@ $("#error").hide();
   });
 </script>
 
-<script>
+<!-- <script>
   // Helper function to display error message
   function showError(message) {
       // Hide the table and button in the event of error
@@ -299,7 +297,7 @@ $("#error").hide();
       })
 });
 
-</script>
+</script> -->
 
 <script>
   // Helper function to display error message
@@ -342,7 +340,8 @@ $("#error").hide();
           if (!courses || !courses.length) {
               showError('courses list empty or undefined.')
           } else {
-            var rows = "";
+            var foundcourse= "";
+            CourseName = CourseName[0].toUpperCase() + CourseName.substr(1, CourseName.length);
             console.log(CourseName)
               for (const course of courses) {
                 console.log(course)
@@ -355,8 +354,8 @@ $("#error").hide();
                       "<td>" + course.Price + "</td>" +
                       "<td>" + course.Availability + "</td>" +
                           "</tr></tbody>";  
-          }
-          } 
+                }
+              } 
           $('#courseTable').append(foundcourse);
           }
          
