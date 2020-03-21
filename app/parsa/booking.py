@@ -82,9 +82,7 @@ def create_booking(booking_input):
     # Create a new booking: set up data fields in the booking as a JSON object (i.e., a python dictionary)
     # Needs to relook at this!!!!!
     booking = dict()
-    print(list_booking)
     booking["MenteeID"] = list_booking["MenteeID"]
-    # booking["Timestamp"] = datetime.datetime.now()
     booking["Booking_course"] = []
     course_item = list_booking['Course_item']
     for index, ci in enumerate(course_item):
