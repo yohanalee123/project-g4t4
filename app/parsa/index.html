@@ -157,6 +157,8 @@ crossorigin="anonymous">
   <button id = "submit2" type="submit" class="btn btn-primary">Show all Courses</button> 
   <button id = "submit" type="submit" class="btn btn-primary">Search for Course</button>        
   <input name="CourseID" type="text" id="CourseID">
+  <button id = "submit3" type="submit" class="btn btn-primary">Search for Course Test</button>        
+  <input name="CourseName" type="text" id="CourseName">
         
         
          
@@ -287,6 +289,77 @@ $("#error").hide();
                           "</tr></tbody>";
           } 
           $('#courseTable').append(foundcourse);
+      } catch (error) {
+          // Errors when calling the service; such as network error, 
+          // service offline, etc
+          showError
+          ('There is a problem retrieving the specific course, please try again later.<br />'+ error);
+     
+  } // error
+      })
+});
+
+</script>
+
+<script>
+  // Helper function to display error message
+  function showError(message) {
+      // Hide the table and button in the event of error
+      $('#courseTable').hide();
+      $('#SearchCourseBtn').hide();
+
+      // Display an error under the main container
+      $('#main-container')
+          .append("<label>"+message+"</label>");
+  }
+
+  // anonymous async function 
+  // - using await requires the function that calls it to be async
+  $("#submit3").click(function() {           
+
+      event.preventDefault();
+
+      $("#error").hide();
+
+      $(async() =>
+      {
+          
+      // Change serviceURL to your own
+      var CourseName = $('#CourseName').val() 
+      // console.log($('#courseTable'))
+      var serviceURL = "http://127.0.0.1:5000/course";
+      console.log(serviceURL);
+      try {
+          const response =
+           await fetch(
+             serviceURL, { method: 'GET' }
+          );
+          console.log(response)
+          const data = await response.json();
+          var courses = data.courses; 
+          console.log(courses)
+          $("#courseTable").find("tbody").empty();
+          if (!courses || !courses.length) {
+              showError('courses list empty or undefined.')
+          } else {
+            var rows = "";
+            console.log(CourseName)
+              for (const course of courses) {
+                console.log(course)
+                if (course['CourseName'].includes(CourseName)) {
+                  foundcourse = "<tbody><tr>" + 
+                      "<td>" + course.CourseID + "</td>" +
+                      "<td>" + course.CourseName + "</td>" +
+                      "<td>" + course.CourseInfo + "</td>" +
+                      "<td>" + course.CourseType + "</td>" +
+                      "<td>" + course.Price + "</td>" +
+                      "<td>" + course.Availability + "</td>" +
+                          "</tr></tbody>";  
+          }
+          } 
+          $('#courseTable').append(foundcourse);
+          }
+         
       } catch (error) {
           // Errors when calling the service; such as network error, 
           // service offline, etc
