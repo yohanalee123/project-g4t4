@@ -1,8 +1,14 @@
+  
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+//Load Composer's autoloader
+#require 'vendor/autoload.php';
 // STEP 1: read POST data
 // Reading POSTed data directly from $_POST causes serialization issues with array data in the POST.
 // Instead, read raw POST data from the input stream.
 $raw_post_data = file_get_contents('php://input');
+file_put_contents("data.txt", $raw_post_data)
 $raw_post_array = explode('&', $raw_post_data);
 $myPost = array();
 foreach ($raw_post_array as $keyval) {
@@ -45,9 +51,9 @@ if ( !($res = curl_exec($ch)) ) {
 }
 curl_close($ch);
 
-
 // inspect IPN validation result and act accordingly
 if (strcmp ($res, "VERIFIED") == 0) {
+  
   // The IPN is verified, process it:
   // check whether the payment_status is Completed
   // check that txn_id has not been previously processed
@@ -64,14 +70,15 @@ if (strcmp ($res, "VERIFIED") == 0) {
   $receiver_email = $_POST['receiver_email'];
   $payer_email = $_POST['payer_email'];
   // IPN message values depend upon the type of notification sent.
-  // To loop through the &_POST array and print the NV pairs to the screen:
-  foreach($_POST as $key => $value) {
-    echo $key . " = " . $value . "<br>";
-  }
-} else if (strcmp ($res, "INVALID") == 0) {
-  // IPN invalid, log for manual investigation
-  echo "The response from IPN was: <b>" .$res ."</b>";
+  
+  $mail = new PHPMailer;
+  $mail->setFrom('Your Email', 'Your Name');
+  $mail->addAddress($payer_email, 'My Friend');
+  $mail->Subject  = 'Order Details';
+  $mail->Body     = 'Hello! Thank you for buying my plugin! The files are attached to this email!';
+  $mail->addAttachment('attachment/wpplugin.zip');
+  $mail->send();
+
+
 }
-
-
 ?>
