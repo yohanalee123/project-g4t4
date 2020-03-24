@@ -1,0 +1,12 @@
+{
+    "MenteeID": "Wong Kai", 
+    "Course_item": [
+         { 
+            "CourseID": "97", 
+            "BookingID": 14412, 
+            "MentorID": "David Lim",
+            "Timeslot": "Monday"
+          }
+    ]
+  }
+  

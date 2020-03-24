@@ -154,6 +154,38 @@ crossorigin="anonymous">
 <h5>View courses available</h5>
 <div id="main-container" class="container">
   <!-- <h1 class="display-4">Book Listing</h1> -->
+  <button id = "submit2" type="submit" class="btn btn-primary">Show all Courses</button> 
+  <button id = "submit3" type="submit" class="btn btn-primary">Search for Course</button>        
+  <input name="CourseName" type="text" id="CourseName" placeholder="cooking, php etc."> <br>  
+  CourseID: <input name="CourseID" type="text" id = "CourseID"><br>
+  CourseName: <input name="CourseName" type="text" id="CourseName"><br>
+  CourseType: <input name="CourseType" type="text" id="CourseType"><br>
+  Price: <input name="price" type="text" id="price"><br>
+  -To Remove- Image: <input name="Image" type="text" id="Image"><br>
+  -To Remove- MentorID: <input name="MentorID" type="text" id="MentorID"><br>
+  Availability: <br>
+  <input type="checkbox" id="Monday" name="Monday" value="Monday">
+  <label for="Monday">Monday</label><br>
+  <input type="checkbox" id="Tuesday" name="Tuesday" value="Tuesday">
+  <label for="Tuesday">Tuesday</label><br>
+  <input type="checkbox" id="Wednesday" name="Wednesday" value="Wednesday">
+  <label for="Wednesday">Wednesday</label><br>
+  <input type="checkbox" id="Thursday" name="Thursday" value="Thursday">
+  <label for="Thursday">Thursday</label><br>
+  <input type="checkbox" id="Friday" name="Friday" value="Friday">
+  <label for="Friday">Friday</label><br>
+  <input type="checkbox" id="Saturday" name="Saturday" value="Saturday">
+  <label for="Saturday">Saturday</label><br>
+  <input type="checkbox" id="Sunday" name="Sunday" value="Sunday">
+  <label for="Sunday">Sunday</label><br>
+  <button id = "submit4" type="submit" class="btn btn-primary">Add Course Listing</button>
+
+  <!-- <select id="filter" name="cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="fiat">Fiat</option>
+    <option value="audi">Audi</option>
+  </select> -->
   <table id="courseTable" class='table table-striped' border='1'>
       <thead class='thead-dark'>
           <tr>
@@ -173,11 +205,17 @@ crossorigin="anonymous">
   // Helper function to display error message
   function showError(message) {
       // Hide the table and button in the event of error
-      // $('#courseTable').hide();
+      $('#courseTable').hide();
       // Display an error under the main container
       $('#main-container')
           .append("<label>"+message+"</label>");
   }
+
+  $("#submit2").click(function() {           
+
+event.preventDefault();
+
+$("#error").hide();
 
   // anonymous async function 
   // - using await requires the function that calls it to be async
@@ -191,6 +229,7 @@ crossorigin="anonymous">
              serviceURL, { method: 'GET' }
           );
           const data = await response.json();
+          $("#courseTable").find("tbody").empty();
           var courses = data.courses; 
 
           // array or array.length are falsy
@@ -220,6 +259,197 @@ crossorigin="anonymous">
           showError
           ('There is a problem retrieving course data, please try again later.<br />'+error);
   } // error
+})
+  });
+</script>
+
+<!-- <script>
+  // Helper function to display error message
+  function showError(message) {
+      // Hide the table and button in the event of error
+      $('#courseTable').hide();
+      $('#SearchCourseBtn').hide();
+
+      // Display an error under the main container
+      $('#main-container')
+          .append("<label>"+message+"</label>");
+  }
+
+  // anonymous async function 
+  // - using await requires the function that calls it to be async
+  $("#submit").click(function() {           
+
+      event.preventDefault();
+
+      $("#error").hide();
+
+      $(async() =>
+      {
+          
+      // Change serviceURL to your own
+      var CourseID = $('#CourseID').val();
+      console.log(CourseID);
+      var serviceURL = "http://127.0.0.1:5000/course" + "/" + CourseID;
+      console.log(serviceURL);
+      try {
+          const response =
+           await fetch(
+             serviceURL, { method: 'GET' }
+          );
+          console.log(response)
+          const course = await response.json();
+          $("#courseTable").find("tbody").empty();
+          console.log(course)
+          if (response.ok){
+              foundcourse = "<tbody><tr>" + 
+                      "<td>" + course.CourseID + "</td>" +
+                      "<td>" + course.CourseName + "</td>" +
+                      "<td>" + course.CourseInfo + "</td>" +
+                      "<td>" + course.CourseType + "</td>" +
+                      "<td>" + course.Price + "</td>" +
+                      "<td>" + course.Availability + "</td>" +
+                          "</tr></tbody>";
+          } 
+          $('#courseTable').append(foundcourse);
+      } catch (error) {
+          // Errors when calling the service; such as network error, 
+          // service offline, etc
+          showError
+          ('There is a problem retrieving the specific course, please try again later.<br />'+ error);
+     
+  } // error
+      })
+});
+
+</script> -->
+
+<script>
+  // Helper function to display error message
+  function showError(message) {
+      // Hide the table and button in the event of error
+      $('#courseTable').hide();
+
+      // Display an error under the main container
+      $('#main-container')
+          .append("<label>"+message+"</label>");
+  }
+
+  // anonymous async function 
+  // - using await requires the function that calls it to be async
+  $("#submit3").click(function() {           
+
+      event.preventDefault();
+
+      $("#error").hide();
+
+      $(async() =>
+      {
+          
+      // Change serviceURL to your own
+      var CourseName = $('#CourseName').val() 
+      // console.log($('#courseTable'))
+      var serviceURL = "http://127.0.0.1:5000/course";
+      console.log(serviceURL);
+      try {
+          const response =
+           await fetch(
+             serviceURL, { method: 'GET' }
+          );
+          console.log(response)
+          const data = await response.json();
+          var courses = data.courses; 
+          console.log(courses)
+          $("#courseTable").find("tbody").empty();
+          if (!courses || !courses.length) {
+              showError('courses list empty or undefined.')
+          } else {
+            var rows= "";
+            CourseName2 = CourseName[0].toUpperCase() + CourseName.substr(1, CourseName.length);
+            CourseName3 = CourseName[0].toLowerCase() + CourseName.substr(1, CourseName.length);
+            console.log(CourseName)
+              for (const course of courses) {
+                console.log(course)
+                if (course['CourseName'].includes(CourseName) || course['CourseName'].includes(CourseName2) || course['CourseName'].includes(CourseName3) ) {
+                  console.log('found')
+                  foundcourse = "<tbody><tr>" + 
+                      "<td>" + course.CourseID + "</td>" +
+                      "<td>" + course.CourseName + "</td>" +
+                      "<td>" + course.CourseInfo + "</td>" +
+                      "<td>" + course.CourseType + "</td>" +
+                      "<td>" + course.Price + "</td>" +
+                      "<td>" + course.Availability + "</td>" +
+                          "</tr></tbody>";  
+                  rows += "<tbody><tr>" + foundcourse + "</tr></tbody>";
+                }
+              } 
+              $('#courseTable').append(rows);
+          }
+         
+      } catch (error) {
+          // Errors when calling the service; such as network error, 
+          // service offline, etc
+          showError
+          ('There is a problem retrieving the specific course, please try again later.<br />'+ error);
+     
+  } // error
+      })
+});
+
+</script>
+
+<script>
+  // Helper function to display error message
+  function showError(message) {
+      // Hide the table and button in the event of error
+      $('#courseTable').hide();
+ 
+      // Display an error under the main container
+      $('#main-container')
+          .append("<label>"+message+"</label>");
+  }
+
+  // anonymous async function 
+  // - using await requires the function that calls it to be async
+  $("#submit").click(function() {           
+
+      event.preventDefault();
+
+      $("#error").hide();
+
+      $(async() =>
+      {
+          
+      // Change serviceURL to your own
+      var Title = $('#title').val();
+      var Price = $('#price').val();
+      var Availability = $('#availability').val();
+      var isbnNumber = $('#isbn13').val();
+      console.log(isbnNumber);
+      var serviceURL = "http://127.0.0.1:5000/book" + "/" + isbnNumber;
+      console.log(serviceURL);
+      try {
+          const response =
+           await fetch(
+              serviceURL, 
+              { 
+              method: 'POST',
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify
+              ({ title: Title, price: Price,
+               availability: Availability })
+          });
+          console.log(response)
+          const data = await response.json();
+          console.log(data)
+          location.reload(true)
+      } catch (error) {
+          // Errors when calling the service; such as network error, 
+          // service offline, etc
+          showError
+          ('There is a problem adding the book, please try again later.<br />'+ error);
+     
+  } // error
+  })
 });
 </script>
 
