@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 // Reading POSTed data directly from $_POST causes serialization issues with array data in the POST.
 // Instead, read raw POST data from the input stream.
 $raw_post_data = file_get_contents('php://input');
-file_put_contents("data.txt", $raw_post_data)
+
 $raw_post_array = explode('&', $raw_post_data);
 $myPost = array();
 foreach ($raw_post_array as $keyval) {
@@ -31,7 +31,7 @@ foreach ($myPost as $key => $value) {
 }
 
 // Step 2: POST IPN data back to PayPal to validate
-$ch = curl_init('https://ipnpb.paypal.com/cgi-bin/webscr');
+$ch = curl_init('https://ipnpb.sandbox.paypal.com/cgi-bin/webscr');
 curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
@@ -51,14 +51,15 @@ if ( !($res = curl_exec($ch)) ) {
 }
 curl_close($ch);
 
-// inspect IPN validation result and act accordingly
+// inspect IPN validation result and act accordingly,
 if (strcmp ($res, "VERIFIED") == 0) {
+  file_put_contents("data_verified.txt", "Ok")
   
   // The IPN is verified, process it:
   // check whether the payment_status is Completed
   // check that txn_id has not been previously processed
   // check that receiver_email is your Primary PayPal email
-  // check that payment_amount/payment_currency are correct
+  // check that payment_amount/payment_currency s correct
   // process the notification
   // assign posted variables to local variables
   $item_name = $_POST['item_name'];
