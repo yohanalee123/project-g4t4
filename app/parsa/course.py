@@ -57,10 +57,13 @@ def find_by_CourseID(CourseID):
 @app.route("/course/<string:CourseType>")
 def find_by_CourseType(CourseType):
     #course = Course.query.filter_by(CourseType=CourseType).first()
-    course = Course.query.filter_by(CourseType=CourseType).one()
-
+    course = Course.query.filter_by(CourseType=CourseType).all()
+    li_course = []
     if course:  
-        return jsonify(course.json())
+        for item in course:
+            li_course.append(item.json())
+
+        return jsonify(li_course)
     return jsonify({"message": "Course Type not found."}),404
 
 
