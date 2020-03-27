@@ -3,14 +3,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
 
 # rename database name if needed
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/course'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 db = SQLAlchemy(app)
-
+CORS(app)
 
 class Course(db.Model):
     __tablename__ = 'course'
@@ -86,6 +85,23 @@ def create_course(CourseID):
         return jsonify({"message": "An error occurred creating the course."}), 500
  
     return jsonify(course.json()), 201
+
+# @app.route("/course/<string:CourseName>", methods=['POST'])
+# def create_course_by_id(CourseName):
+#     if (Course.query.filter_by(CourseName=CourseName).first()):
+#         return jsonify({"message": "A course with CourseName '{}' already exists.".format(CourseName)}), 400
+ 
+#     data = request.get_json()
+#     course = Course(CourseName, **data)
+ 
+#     try:
+#         db.session.add(course)
+#         db.session.commit()
+#     except:
+#         return jsonify({"message": "An error occurred creating the course."}), 500
+ 
+#     return jsonify(course.json()), 201
+ 
  
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

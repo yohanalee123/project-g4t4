@@ -42,17 +42,19 @@
     <div id="main-container" class="container">
         <h1 class="display-4">Adding Course Listing</h1>
         CourseID: <input name="CourseID" type="text" id = "CourseID"><br>
-        CourseName: <input name="CourseName" type="text" id="CourseName"><br>
-        CourseType: <select id="CourseType" name="CourseType">
+        Course Name: <input name="CourseName" type="text" id="CourseName"><br>
+        <!-- Course Type: <input name="CourseType" type="text" id="CourseType"><br> -->
+        Course Type: <select id="CourseType" name="CourseType">
                         <option value="Technology">Technology</option>
-                    </select>
+                    </select><br>
+        Course Info: <input name="CourseInfo" type="text" id="CourseInfo"><br>            
         Price: <input name="price" type="text" id="Price"><br>
         <form action="upload.php" method="post" enctype="multipart/form-data">
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
             <input type="submit" value="Upload Image" name="submit">
         </form>
-        -To Remove- MentorID: <input name="MentorID" type="text" id="MentorID"><br>
+        <!-- -To Remove- MentorID: <input name="MentorID" type="text" id="MentorID"><br> -->
         Availability: <br>
         <input type="checkbox" id="Monday" name="Availability" value="Monday">
         <label for="Monday">Monday</label><br>
@@ -146,7 +148,7 @@
         function showError(message) {
             // Hide the table and button in the event of error
             $('#courseTable').hide();
-            $('#submit4').hide();
+            // $('#submit4').hide();
        
             // Display an error under the main container
             $('#main-container')
@@ -167,23 +169,25 @@
             // Change serviceURL to your own
             var CourseID = $('#CourseID').val();
             var CourseName = $('#CourseName').val();
-            var CourseName = $('#CourseName').val();
+            var CourseInfo = $('#CourseInfo').val();
+            var CourseType = $('#CourseType').val();
             var Price = $('#Price').val();
-            var Availability = $('#availability').val();
-            var isbnNumber = $('#isbn13').val();
-            console.log(isbnNumber);
-            var serviceURL = "http://127.0.0.1:5000/book" + "/" + isbnNumber;
+            var Availability = $('Availability').val();     
+            console.log('hi')
+            var serviceURL = "http://127.0.0.1:5000/course" + "/" + CourseID;
             console.log(serviceURL);
             try {
+                console.log('hi')
                 const response =
                  await fetch(
                     serviceURL, 
                     { 
+                    mode: 'cors',
                     method: 'POST',
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify
-                    ({ title: Title, price: Price,
-                     availability: Availability })
+                    ({ CourseID: CourseID, CourseName: CourseName, CourseInfo: CourseInfo, CourseType: CourseType,
+                     Price: Price, Availability: Availability})
                 });
                 console.log(response)
                 const data = await response.json();
@@ -193,7 +197,7 @@
                 // Errors when calling the service; such as network error, 
                 // service offline, etc
                 showError
-                ('There is a problem adding the book, please try again later.<br />'+ error);
+                ('There is a problem adding the course listing, please try again later.<br />'+ error);
            
         } // error
         })
