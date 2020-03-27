@@ -3,16 +3,14 @@
       {
         "MenteeID": "Jason Liu", 
         "BookingID": 12, 
-        "Course_item": [
+        "booking_item": [
           { 
             "CourseID": "97", 
-            "BookingID": 13351, 
             "MentorID": "David Lim",
             "Timeslot": "Monday"
           },
           { 
             "CourseID": "98", 
-            "BookingID": 13351, 
             "MentorID": "May",
             "Timeslot": "Tuesday"
           }

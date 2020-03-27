@@ -1,10 +1,8 @@
 {
     "MenteeID": "Wong Kai", 
-    "BookingID": 13,
     "Course_item": [
          { 
             "CourseID": "97", 
-            "BookingID": 13441, 
             "MentorID": "David Lim",
             "Timeslot": "Monday"
           }
