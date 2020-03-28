@@ -6,7 +6,7 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width">
-<title>Mentor.</title>
+<title>mentor.</title>
 
 <!-- mobile responsive meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -171,8 +171,11 @@
 </section>
   <!-- /featured post -->
   <!-- blog post -->
-  
-  
+  <!-- <button id = "allCourseBtn" type="submit" class="btn btn-primary">Show all Courses</button>  -->
+  <button id = "SearchCourseBtn" type="submit" class="btn btn-primary">Search for Course</button>  
+  <input name="CourseName" type="text" id="CourseName" placeholder="cooking, php etc."> <br> 
+  <a id="addCourseBtn" class="btn btn-primary" 
+  href="add_course_listing.html">Add a Course Listing</a>  
 <section class="section">
   <div class="container" >
     <h5>View courses available</h5>
@@ -246,6 +249,89 @@
           } // error
         });
       </script>
+
+<script>
+  // Helper function to display error message
+  function showError(message) {
+      // Hide the table and button in the event of error
+      $('#courseTable').hide();
+
+      // Display an error under the main container
+      $('#main-container')
+          .append("<label>"+message+"</label>");
+  }
+
+  // anonymous async function 
+  // - using await requires the function that calls it to be async
+  $("#SearchCourseBtn").click(function() {           
+
+      event.preventDefault();
+
+      $("#error").hide();
+
+      $(async() =>
+      {
+          
+      // Change serviceURL to your own
+      var CourseName = $('#CourseName').val() 
+      // console.log($('#courseTable'))
+      var serviceURL = "http://127.0.0.1:5000/course";
+      console.log(serviceURL);
+      try {
+          const response =
+           await fetch(
+             serviceURL, { method: 'GET' }
+          );
+          console.log(response)
+          const data = await response.json();
+          var courses = data.courses; 
+          console.log(courses)
+          $("#courseTable").find("tbody").empty();
+          if (!courses || !courses.length) {
+              showError('courses list empty or undefined.')
+          } else {
+            var rows= "";
+            CourseName2 = CourseName[0].toUpperCase() + CourseName.substr(1, CourseName.length);
+            CourseName3 = CourseName[0].toLowerCase() + CourseName.substr(1, CourseName.length);
+            CourseName4 = CourseName.toUpperCase();
+            CourseName5 = CourseName.toLowerCase();
+            console.log(CourseName)
+              for (const course of courses) {
+                console.log(course)
+                if (course['CourseName'].includes(CourseName) || course['CourseName'].includes(CourseName2) || course['CourseName'].includes(CourseName3) || course['CourseName'].includes(CourseName4) || course['CourseName'].includes(CourseName5)) {
+                  console.log('found')
+                  eachRow = 
+                  "<div class=\"col-lg-4 col-sm-6 mb-5\">" +
+                    "<article class=\"text-center\">" + 
+                      //"<img class=\"img-fluid mb-4\" src=\"images/masonary-post/post-" + i + ".jpg\" alt=\"post-thumb\">" +
+                      "<img class=\"img-fluid mb-4\" src= " + course.Image + ">" +
+                      "<p class=\"text-uppercase mb-2\">" + course.CourseType + "</p>" +
+                      "<h4 class=\"title-border\"><a class=\"text-dark\" href=\"course_details.html" + "?id=" + course.CourseID + "\">" + course.CourseName + "</a></h4>" +
+                      "<p>" + course.CourseInfo + "</p>" +
+                      "<a href=\"blog-single.html\" class=\"btn btn-transparent\">read more</a>" +
+                    "</article>" +
+                  "</div>";
+
+                console.log(eachRow)
+                //document.getElementById('test').innerHTML = eachRow
+                rows += eachRow
+                
+              }
+              document.getElementById('courses').innerHTML = rows
+          }
+        }
+      } catch (error) {
+          // Errors when calling the service; such as network error, 
+          // service offline, etc
+          showError
+          ('There is a problem retrieving the specific course, please try again later.<br />'+ error);
+     
+  } // error
+      })
+});
+
+</script>
+
     </div>
   </div>
 </section>

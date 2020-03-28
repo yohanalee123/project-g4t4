@@ -5,6 +5,11 @@
             "CourseID": "97", 
             "MentorID": "David Lim",
             "Timeslot": "Monday"
+          },
+          { 
+            "CourseID": "101", 
+            "MentorID": "Mary Ng",
+            "Timeslot": "Friday"
           }
     ]
   }

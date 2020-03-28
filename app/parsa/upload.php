@@ -1,5 +1,4 @@
 <?php
-
 $target_dir = "images/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -22,14 +21,20 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
+if ($_FILES["fileToUpload"]["size"] > 50000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
+// // Allow certain file formats
+// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+// && $imageFileType != "gif" ) {
+//     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+//     $uploadOk = 0;
+// }
+
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+if($imageFileType != "png") {
+    echo "Sorry, only PNG files are allowed.";
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
