@@ -2,7 +2,7 @@
   "bookings": [
     {
       "MenteeID": "Jason Liu",
-      "BookingID": 12,
+      "BookingID": 13221,
       "booking_item": [
         {
           "CourseID": "97",
@@ -17,13 +17,29 @@
       ]
     },
     {
+      "MenteeID": "Tom",
+      "BookingID": 13222,
+      "booking_item": [
+        {
+          "CourseID": "101",
+          "MentorID": "Mary Ng",
+          "Timeslot": "Friday"
+        }
+      ]
+    },
+    {
       "MenteeID": "Wong Kai",
-      "BookingID": 13,
+      "BookingID": 13223,
       "booking_item": [
         {
           "CourseID": "97",
           "MentorID": "David Lim",
           "Timeslot": "Monday"
+        },
+        {
+          "CourseID": "101",
+          "MentorID": "Mary Ng",
+          "Timeslot": "Friday"
         }
       ]
     }

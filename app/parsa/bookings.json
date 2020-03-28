@@ -2,7 +2,7 @@
     "bookings": [
       {
         "MenteeID": "Jason Liu", 
-        "BookingID": 12, 
+        "BookingID": 13221, 
         "booking_item": [
           { 
             "CourseID": "97", 
@@ -13,6 +13,17 @@
             "CourseID": "98", 
             "MentorID": "May",
             "Timeslot": "Tuesday"
+          }
+        ]
+      },
+      {
+        "MenteeID": "Tom", 
+        "BookingID": 13222, 
+        "booking_item": [
+          { 
+            "CourseID": "101", 
+            "MentorID": "Mary Ng",
+            "Timeslot": "Friday"
           }
         ]
       } 

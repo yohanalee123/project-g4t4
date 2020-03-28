@@ -7,13 +7,11 @@ import csv
 # Use a reply-to queue and correlation_id to get a corresponding reply
 import pika
 
-def receiveOrder():
+def receiveBooking():
     hostname = "localhost" # default broker hostname. Web management interface default at http://localhost:15672
     port = 5672 # default messaging port.
     # connect to the broker and set up a communication channel in the connection
     connection = pika.BlockingConnection(pika.ConnectionParameters(host=hostname, port=port))
-        # Note: various network firewalls, filters, gateways (e.g., SMU VPN on wifi), may hinder the connections;
-        # If "pika.exceptions.AMQPConnectionError" happens, may try again after disconnecting the wifi and/or disabling firewalls
     channel = connection.channel()
 
     # set up the exchange if the exchange doesn't exist
@@ -32,15 +30,14 @@ def receiveOrder():
 
 def reply_callback(channel, method, properties, body): # required signature for a callback; no return
     """processing function called by the broker when a message is received"""
-    # Load correlations for existing created orders from a file.
-    # - In practice, using DB (as part of the order DB) is a better choice than using a file.
+    # Load correlations for existing created bookings from a file.
     rows = []
     with open("corrids.csv", 'r', newline='') as corrid_file: # 'with' statement in python auto-closes the file when the block of code finishes, even if some exception happens in the middle
         csvreader = csv.DictReader(corrid_file)
         for row in csvreader:
             rows.append(row)
     # Check if the reply message contains a valid correlation id recorded in the file.
-    # - Assume each line in the file is in this CSV format: <order_id>, <correlation_id>, <status>, ...
+    # - Assume each line in the file is in this CSV format: <BookingID>, <correlation_id>
     matched = False
     for row in rows:
         if not 'correlation_id' in row:
@@ -64,5 +61,5 @@ def reply_callback(channel, method, properties, body): # required signature for 
 
 # Execute this program if it is run as a main script (not by 'import')
 if __name__ == "__main__":
-    print("This is " + os.path.basename(__file__) + ": listening for a reply from mentpr for a booking...")
-    receiveOrder()
+    print("This is " + os.path.basename(__file__) + ": listening for a reply from mentor for a booking...")
+    receiveBooking()

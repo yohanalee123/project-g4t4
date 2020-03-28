@@ -2,7 +2,6 @@ import json
 import sys
 import os
 import random
-from pprint import pprint
 
 # Communication patterns:
 # Use a message-broker with 'direct' exchange to enable interaction
@@ -62,7 +61,6 @@ def callback(channel, method, properties, body): # required signature for the ca
 
 def processBooking(booking):
     print("Processing a booking:")
-    print(booking)
     # Can do anything here. E.g., publish a message to the error handler when processing fails.
     resultstatus = bool(random.getrandbits(1)) # simulate success/failure with a random True or False
     result = {'status': resultstatus, 'message': 'Simulated random booking result.', 'booking': booking}

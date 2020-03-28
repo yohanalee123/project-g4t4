@@ -5,7 +5,7 @@ import random
 import datetime
 from pprint import pprint
 
-# Communication patterns:
+# Communication patterns: directmsgreply
 # Use a message-broker with 'direct' exchange to enable interaction
 # Use a reply-to queue and correlation_id to get a corresponding reply
 import pika
