@@ -46,29 +46,32 @@
         <!-- Course Type: <input name="CourseType" type="text" id="CourseType"><br> -->
         Course Type: <select id="CourseType" name="CourseType">
                         <option value="Technology">Technology</option>
+                        <option value="Technology">General</option>
+                        <option value="Technology">Baking & Cooking</option>
                     </select><br>
         Course Info: <input name="CourseInfo" type="text" id="CourseInfo"><br>            
         Price: <input name="Price" type="text" id="Price"><br>
-    
+        MentorID: <input name="MentorID" type="text" id="MentorID"><br>
         <!-- -To Remove- MentorID: <input name="MentorID" type="text" id="MentorID"><br> -->
-        Availability: <br>
-        <input type="checkbox" id="Monday" name="Availability" value="Monday">
+        Availability:<br>
+        <input type="checkbox" id="Monday" name="Monday" value="Monday">
         <label for="Monday">Monday</label><br>
-        <input type="checkbox" id="Tuesday" name="Availability" value="Tuesday">
+        <input type="checkbox" id="Tuesday" name="Tuesday" value="Tuesday">
         <label for="Tuesday">Tuesday</label><br>
-        <input type="checkbox" id="Wednesday" name="Availability" value="Wednesday">
+        <input type="checkbox" id="Wednesday" name="Wednesday" value="Wednesday">
         <label for="Wednesday">Wednesday</label><br>
-        <input type="checkbox" id="Thursday" name="Availability" value="Thursday">
+        <input type="checkbox" id="Thursday" name="Thursday" value="Thursday">
         <label for="Thursday">Thursday</label><br>
-        <input type="checkbox" id="Friday" name="Availability" value="Friday">
+        <input type="checkbox" id="Friday" name="Friday" value="Friday">
         <label for="Friday">Friday</label><br>
-        <input type="checkbox" id="Saturday" name="Availability" value="Saturday">
+        <input type="checkbox" id="Saturday" name="Saturday" value="Saturday">
         <label for="Saturday">Saturday</label><br>
-        <input type="checkbox" id="Sunday" name="Availability" value="Sunday">
+        <input type="checkbox" id="Sunday" name="Sunday" value="Sunday">
         <label for="Sunday">Sunday</label><br>
         Image: <input name="Image" type="text" id="Image"><br>
         <button id = "submit4" type="submit" class="btn btn-primary">Add Course Listing</button>
-        
+        <a id="homeBtn" class="btn btn-primary" 
+  href="index_old.html">Return Home</a>  
         <form action="upload.php" method="post" enctype="multipart/form-data">
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
@@ -82,7 +85,9 @@
                     <th>Course Info</th>
                     <th>Course Type</th>
                     <th>Price</th>
+                    <th>MentorID</th>
                     <th>Availability</th>
+                    <th>Image</th>
                 </tr>
             </thead>
         </table>
@@ -127,7 +132,9 @@
                             "<td>" + course.CourseInfo + "</td>" +
                             "<td>" + course.CourseType + "</td>" +
                             "<td>" + course.Price + "</td>" +
-                            "<td>" + course.Availability + "</td>";
+                            "<td>" + course.MentorID + "</td>" +
+                            "<td>" + course.Availability + "</td>" +
+                            "<td>" + course.Image + "</td>";
                             // "<td>" + course.Image + "</td>";
                             // "<td>" + course.MentorID + "</td>";
                         rows += "<tbody><tr>" + eachRow + "</tr></tbody>";
@@ -173,7 +180,30 @@
             var CourseInfo = $('#CourseInfo').val();
             var CourseType = $('#CourseType').val();
             var Price = $('#Price').val();
-            var Availability = $('Availability').val();     
+            var MentorID = $('#MentorID').val(); 
+            var Availability = "";
+            if (document.getElementById("Monday").checked){
+                Availability +=  $('#Monday').val()+ " ";
+            }
+            if (document.getElementById("Tuesday").checked){
+                Availability +=  $('#Tuesday').val()+ " ";
+            }
+            if (document.getElementById("Wednesday").checked){
+                Availability +=  $('#Wednesday').val()+ " ";
+            }
+            if (document.getElementById("Thursday").checked){
+                Availability +=  $('#Thursday').val()+ " ";
+            }
+            if (document.getElementById("Friday").checked){
+                Availability +=  $('#Friday').val()+ " ";
+            }
+            if (document.getElementById("Saturday").checked){
+                Availability +=  $('#Saturday').val()+ " ";
+            }
+            if (document.getElementById("Sunday").checked){
+                Availability +=  $('#Sunday').val()+ " ";
+            }
+            var Image = "images/" + $('#Image').val() + ".png"; 
             console.log('hi')
             var serviceURL = "http://127.0.0.1:5000/course" + "/" + CourseID;
             console.log(serviceURL);
@@ -183,12 +213,11 @@
                  await fetch(
                     serviceURL, 
                     { 
-                    mode: 'cors',
                     method: 'POST',
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify
-                    ({ CourseID: CourseID, CourseName: CourseName, CourseInfo: CourseInfo, CourseType: CourseType,
-                     Price: Price, Availability: Availability})
+                    ({ CourseName: CourseName, CourseInfo: CourseInfo, CourseType: CourseType,
+                     Price: Price,  MentorID: MentorID, Availability: Availability, Image: Image})
                 });
                 console.log(response)
                 const data = await response.json();
