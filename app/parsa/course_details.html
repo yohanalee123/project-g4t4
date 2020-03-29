@@ -122,7 +122,7 @@
                   if (courseID == course.CourseID) {
                     document.getElementById('CourseName').innerHTML = course.CourseName;
                     document.getElementById('CourseInfo').innerHTML = course.CourseInfo;
-                    //document.getElementById('Availability').innerHTML = course.Availability;
+                    // document.getElementById('Availability').innerHTML = course.Availability;
                     document.getElementById('Price').innerHTML = "$" + course.Price;
                     document.getElementById('Image').innerHTML = course.Image;
                     document.getElementById("Image").src = course.Image;
@@ -153,7 +153,13 @@
         <div class="col-lg-8">
           <ul class="list-inline d-flex justify-content-between py-3">
             <li class="list-inline-item"><i class="ti-user mr-2"></i>Post by Jhon Abraham</li>
-            <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
+            <li class="list-inline-item"><i class="ti-calendar mr-2"></i>
+            <script>
+              const urlParams3 = new URLSearchParams(window.location.search);
+                const course = urlParams3.get('date');
+              document.write(course);
+            </script>
+            </li>
           </ul>
           <img id="Image" alt="post-thumb" class="w-100 img-fluid mb-4">
 
@@ -163,7 +169,7 @@
 
           </div>
         </div>
-        <!-- THIS SHOULD BE THE PAY NOW CONTAINER!!!--><
+        <!-- THIS SHOULD BE THE PAY NOW CONTAINER!!!-->
         <div class="widget">
           <h4 id="Price">Price</h4>
           <div class="media mb-4">
