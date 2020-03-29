@@ -1,7 +1,7 @@
 <html lang="en">
   <head>
     <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="1064425262989-oissu7nu87so595roadoon4c9qqcpt5j.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="1064425262989-2kij700ep6t74cltq1q8g7hgn2g6htkl.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
   <body>
@@ -9,6 +9,7 @@
     <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
+        //client secret:2ivcWLOT6JDpeD6LKddqGxx2
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Don't send this directly to your server!
         console.log('Full Name: ' + profile.getName());
@@ -29,7 +30,7 @@
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
           console.log('User signed out.');
-        });
+        }); 
       }
     </script>
   </body>
