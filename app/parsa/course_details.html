@@ -122,11 +122,11 @@
                   if (courseID == course.CourseID) {
                     document.getElementById('CourseName').innerHTML = course.CourseName;
                     document.getElementById('CourseInfo').innerHTML = course.CourseInfo;
-                    document.getElementById('Availability').innerHTML = course.Availability;
+                    //document.getElementById('Availability').innerHTML = course.Availability;
                     document.getElementById('Price').innerHTML = "$" + course.Price;
                     document.getElementById('Image').innerHTML = course.Image;
                     document.getElementById("Image").src = course.Image;
-
+                    
                   }
 
                 }
@@ -159,15 +159,18 @@
 
           <div class="content">
             <p id="CourseInfo"></p>
-            < </div>
-          </div>
-          <!-- THIS SHOULD BE THE PAY NOW CONTAINER!!!-->
-          < <div class="widget">
-            <h4 id="Price">Price</h4>
-            <div class="media mb-4">
-              <button class="btn btn-primary" id="webpage">Pay Now</button>
 
-            </div>
+
+          </div>
+        </div>
+        <!-- THIS SHOULD BE THE PAY NOW CONTAINER!!!--><
+        <div class="widget">
+          <h4 id="Price">Price</h4>
+          <div class="media mb-4">
+
+          <button class="btn btn-primary" id="webpage">Pay Now</button>
+
+          </div>
 
 
         </div>
