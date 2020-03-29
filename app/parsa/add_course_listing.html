@@ -80,6 +80,7 @@ label {
   clear: both;
 }
 
+
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .col-25, .col-75, input[type=submit] {
@@ -124,8 +125,8 @@ label {
         Image: <input name="Image" type="text" id="Image"><br>
         <label for="ListDate">Listing Date:</label>
         <input type="date" id="ListDate" name="ListDate"> <br>  
-        <button id = "submit4" type="submit" class="btn btn-primary">Add Course Listing</button>
-        <a id="homeBtn" class="btn btn-primary" href="index.html">Return Home</a><br>
+        <button id = "submit4" type="submit" style = "border-radius: 50px; background-color : #ff6f00; border: none;" class="btn btn-primary" >Add Course Listing</button>
+        <a id="homeBtn" style = "border-radius: 50px; background-color : #ff6f00; border: none;" class="btn btn-primary" href="index.html">Return Home</a><br>
         <form action="upload.php" method="post" enctype="multipart/form-data">
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
