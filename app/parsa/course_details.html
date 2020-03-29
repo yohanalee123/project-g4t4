@@ -61,38 +61,24 @@
         aria-controls="navogation" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse text-center" id="navogation">
+  
+    <div class="collapse navbar-collapse text-center" id="navogation">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link text-uppercase text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Home
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="index.html">Homepage 1</a>
-              <a class="dropdown-item" href="homepage-2.html">Homepage 2</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase text-dark" href="index.html">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-uppercase text-dark" href="about.html">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase text-dark" href="category.html">Categories</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase text-dark" href="contact.html">Contact</a>
-          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link text-uppercase text-dark" href="categories.html">Categories</a>
+          </li> -->
         </ul>
-        <form class="form-inline position-relative ml-lg-4">
-          <input class="form-control px-0 w-100" type="search" placeholder="Search">
-          <!-- <button class="search-icon" type="submit"><i class="ti-search text-dark"></i></button> -->
-          <a href="search.html" class="search-icon"><i class="ti-search text-dark"></i></a>
-        </form>
       </div>
     </nav>
+    <h5>Explore your interests with mentor.</h5>
   </header>
-
 
   <!-- page-title -->
   <section class="section bg-secondary">
@@ -122,7 +108,7 @@
                   if (courseID == course.CourseID) {
                     document.getElementById('CourseName').innerHTML = course.CourseName;
                     document.getElementById('CourseInfo').innerHTML = course.CourseInfo;
-                    //document.getElementById('Availability').innerHTML = course.Availability;
+                    // document.getElementById('Availability').innerHTML = course.Availability;
                     document.getElementById('Price').innerHTML = "$" + course.Price;
                     document.getElementById('Image').innerHTML = course.Image;
                     document.getElementById("Image").src = course.Image;
@@ -153,7 +139,13 @@
         <div class="col-lg-8">
           <ul class="list-inline d-flex justify-content-between py-3">
             <li class="list-inline-item"><i class="ti-user mr-2"></i>Post by Jhon Abraham</li>
-            <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
+            <li class="list-inline-item"><i class="ti-calendar mr-2"></i>
+            <script>
+              const urlParams3 = new URLSearchParams(window.location.search);
+                const course = urlParams3.get('date');
+              document.write(course);
+            </script>
+            </li>
           </ul>
           <img id="Image" alt="post-thumb" class="w-100 img-fluid mb-4">
 
@@ -163,7 +155,7 @@
 
           </div>
         </div>
-        <!-- THIS SHOULD BE THE PAY NOW CONTAINER!!!--><
+        <!-- THIS SHOULD BE THE PAY NOW CONTAINER!!!-->
         <div class="widget">
           <h4 id="Price">Price</h4>
           <div class="media mb-4">
