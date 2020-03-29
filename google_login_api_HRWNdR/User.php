@@ -1,6 +1,6 @@
 <?php
 class User {
-	private $dbHost     = "localhost";
+    private $dbHost     = "localhost";
     private $dbUsername = "root";
     private $dbPassword = "";
     private $dbName     = "esd_users";
