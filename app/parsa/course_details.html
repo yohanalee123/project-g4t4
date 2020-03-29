@@ -3,7 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Parsa | Portfolio Template</title>
+  <script>
+    const urlParams5 = new URLSearchParams(window.location.search);
+    const name = urlParams5.get('name');
+    document.write("<title>"+ name +"</title>")
+  </script>
+  
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -138,12 +143,16 @@
       <div class="row">
         <div class="col-lg-8">
           <ul class="list-inline d-flex justify-content-between py-3">
-            <li class="list-inline-item"><i class="ti-user mr-2"></i>Post by Jhon Abraham</li>
+            <li class="list-inline-item"><i class="ti-user mr-2"></i>Post by Winnie</li>
             <li class="list-inline-item"><i class="ti-calendar mr-2"></i>
             <script>
               const urlParams3 = new URLSearchParams(window.location.search);
-                const course = urlParams3.get('date');
-              document.write(course);
+              const course = urlParams3.get('date');
+              var date = '';
+              for (i = 0; i < 16; i++) {
+                date += course[i];
+              }
+              document.write(date);
             </script>
             </li>
           </ul>
@@ -158,8 +167,20 @@
         <!-- THIS SHOULD BE THE PAY NOW CONTAINER!!!-->
         <div class="widget">
           <h4 id="Price">Price</h4>
+          My available dates are: 
+          <ul style="list-style-type:disc;">
+            <script>
+            const urlParams6 = new URLSearchParams(window.location.search);
+            const avail = urlParams6.get('avail');
+            var test = avail.split(" ");
+            for (const item of test) {
+              document.write("<li>" + item + "</li>");
+            }
+          </script>
+          </ul>
+          <br>
           <div class="media mb-4">
-
+            
           <button class="btn btn-primary" id="webpage">Pay Now</button>
 
           </div>
@@ -198,10 +219,9 @@
           <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
             <h6>Follow</h6>
             <ul class="list-inline d-inline-block">
-              <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-facebook"></i></a></li>
-              <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-twitter-alt"></i></a></li>
-              <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-linkedin"></i></a></li>
-              <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-github"></i></a></li>
+              <li class="list-inline-item"><a href="https://www.smu.edu.sg/faculty/profile/9617/JIANG-Lingxiao" class="text-dark"><i class="ti-facebook"></i></a></li>
+              <li class="list-inline-item"><a href="https://www.smu.edu.sg/faculty/profile/9617/JIANG-Lingxiao" class="text-dark"><i class="ti-twitter-alt"></i></a></li>
+              <li class="list-inline-item"><a href="https://www.linkedin.com/in/wang-piao-068321193/?originalSubdomain=sg" class="text-dark"><i class="ti-linkedin"></i></a></li>
             </ul>
           </div>
         </div>
