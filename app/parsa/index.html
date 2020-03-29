@@ -62,38 +62,22 @@
         aria-controls="navogation" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse text-center" id="navogation">
+  
+    <div class="collapse navbar-collapse text-center" id="navogation">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link text-uppercase text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Home
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="index.html">Homepage 1</a>
-              <a class="dropdown-item" href="homepage-2.html">Homepage 2</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase text-dark" href="index.html">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-uppercase text-dark" href="about.html">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase text-dark" href="category.html">Categories</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase text-dark" href="contact.html">Contact</a>
-          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link text-uppercase text-dark" href="categories.html">Categories</a>
+          </li> -->
         </ul>
-        <form class="form-inline position-relative ml-lg-4">
-          <input class="form-control px-0 w-100" type="search" placeholder="Search">
-          <!-- <button class="search-icon" type="submit"><i class="ti-search text-dark"></i></button> -->
-          <a href="search.html" class="search-icon"><i class="ti-search text-dark"></i></a>
-        </form>
-
       </div>
     </nav>
-    <br />
     <h5>Explore your interests with mentor.</h5>
   </header>
 
@@ -109,8 +93,8 @@
             <div class="card-img-overlay">
               <div class="card-content">
                 <p class="text-uppercase">Technology</p>
-                <h4 class="card-title mb-4"><a class="text-white" href="category.html">Learn Basic Programming </a></h4>
-                <a class="btn btn-outline-light" href="category.html">read more</a>
+                <h4 class="card-title mb-4"><a class="text-white" href="technology.html">Learn Basic Programming </a></h4>
+                <a class="btn btn-outline-light" href="technology.html?id=Technology">View Courses</a>
               </div>
             </div>
           </article>
@@ -121,9 +105,9 @@
             <div class="card-img-overlay">
               <div class="card-content">
                 <p class="text-uppercase">Baking & Cooking</p>
-                <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">Unleash your inner
+                <h4 class="card-title mb-4"><a class="text-white" href="bakecook.html">Unleash your inner
                     MasterChef</a></h4>
-                <a class="btn btn-outline-light" href="blog-single.html">read more</a>
+                <a class="btn btn-outline-light" href="bakecook.html?id=Baking %26 Cooking">View Courses</a>
               </div>
             </div>
           </article>
@@ -134,8 +118,8 @@
             <div class="card-img-overlay">
               <div class="card-content">
                 <p class="text-uppercase">Sports & Fitness</p>
-                <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">No pain, no gain</a></h4>
-                <a class="btn btn-outline-light" href="blog-single.html">read more</a>
+                <h4 class="card-title mb-4"><a class="text-white" href="sportsfitness.html">No pain, no gain</a></h4>
+                <a class="btn btn-outline-light" href="sportsfitness.html?id=Sports %26 Fitness">View Courses</a>
               </div>
             </div>
           </article>
@@ -145,12 +129,11 @@
             <img class="card-img rounded-0 img-fluid w-100" src="images/featured-post/post-4.jpg" alt="post-thumb">
             <div class="card-img-overlay">
               <div class="card-content">
-                <p class="text-uppercase">Article</p>
-                <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">Organize Your Life With 10
-                    Simple rule</a></h4>
-                <a class="btn btn-outline-light" href="blog-single.html">read more</a>
+                <p class="text-uppercase">General</p>
+                <h4 class="card-title mb-4"><a class="text-white" href="general.html">For all the other courses</a></h4>
+                <a class="btn btn-outline-light" href="general.html?id=General">View Coursese</a>
               </div>
-            </div>
+            </div>                                                                                                                                                                                                                                                                           
           </article>
         </div>
         <div class="col-lg-3 col-sm-6 mb-2 mb-lg-0 px-1">
@@ -159,9 +142,9 @@
             <div class="card-img-overlay">
               <div class="card-content">
                 <p class="text-uppercase">Nature</p>
-                <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">Organize Your Life With 10
+                <h4 class="card-title mb-4"><a class="text-white" href="nature.html">Organize Your Life With 10
                     Simple rule</a></h4>
-                <a class="btn btn-outline-light" href="blog-single.html">read more</a>
+                <a class="btn btn-outline-light" href="nature.html?id=Nature">View Courses</a>
               </div>
             </div>
           </article>
@@ -250,7 +233,84 @@
             } // error
           });
         </script>
-
+        
+        <script>
+          // Helper function to display error message
+          function showError(message) {
+              // Hide the table and button in the event of error
+              $('#courseTable').hide();
+        
+              // Display an error under the main container
+              $('#main-container')
+                  .append("<label>"+message+"</label>");
+          }
+        
+          // anonymous async function 
+          // - using await requires the function that calls it to be async
+          $("#SearchCourseBtn").click(function() {           
+        
+              event.preventDefault();
+        
+              $("#error").hide();
+        
+              $(async() =>
+              {
+                  
+              // Change serviceURL to your own
+              var CourseName = $('#CourseName').val() 
+              // console.log($('#courseTable'))
+              var serviceURL = "http://127.0.0.1:5000/course";
+              console.log(serviceURL);
+              try {
+                  const response =
+                   await fetch(
+                     serviceURL, { method: 'GET' }
+                  );
+                  console.log(response)
+                  const data = await response.json();
+                  var courses = data.courses; 
+                  console.log(courses)
+                  $("#courseTable").find("tbody").empty();
+                  if (!courses || !courses.length) {
+                      showError('courses list empty or undefined.')
+                  } else {
+                    var rows= "";
+                    CourseName2 = CourseName[0].toUpperCase() + CourseName.substr(1, CourseName.length);
+                    CourseName3 = CourseName[0].toLowerCase() + CourseName.substr(1, CourseName.length);
+                    CourseName4 = CourseName.toLowerCase();
+                    CourseName5 = CourseName.toUpperCase();
+                    console.log(CourseName)
+                      for (const course of courses) {
+                        console.log(course)
+                        if (course['CourseName'].includes(CourseName) || course['CourseName'].includes(CourseName2) || course['CourseName'].includes(CourseName3) || course['CourseName'].includes(CourseName4) || course['CourseName'].includes(CourseName5) ) {
+                          console.log('found')
+                          foundcourse = "<tbody><tr>" + 
+                            "<div class=\"col-lg-4 col-sm-6 mb-5\">" +
+                            "<article class=\"text-center\">" +
+                            //"<img class=\"img-fluid mb-4\" src=\"images/masonary-post/post-" + i + ".jpg\" alt=\"post-thumb\">" +
+                            "<img class=\"img-fluid mb-4\" src= " + course.Image + ">" +
+                            "<p class=\"text-uppercase mb-2\">" + course.CourseType + "</p>" +
+                            "<h4 class=\"title-border\"><a class=\"text-dark\" href=\"course_details.html" + "?id=" + course.CourseID + "\">" + course.CourseName + "</a></h4>" +
+                            "<p>" + course.CourseInfo + "</p>" +
+                            "<a href=\"course_details.html" + "?id=" + course.CourseID + "\" class=\"btn btn-transparent\">read more</a>" +
+                            "</article>" +
+                            "</div>";
+                          rows += foundcourse;
+                        }
+                      } 
+                      document.getElementById('courses').innerHTML = rows
+                  }
+                 
+              } catch (error) {
+                  // Errors when calling the service; such as network error, 
+                  // service offline, etc
+                  showError
+                  ('There is a problem retrieving the specific course, please try again later.<br />'+ error);
+             
+          } // error
+              })
+        });
+      </script>
       </div>
     </div>
   </section>

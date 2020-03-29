@@ -34,14 +34,13 @@ def bookings_save(bookings_file):
 class Booking_Item:
     def __init__(self):
         self.BookingID = 0
-        self.MentorID = 0
-        self.MenteeID = 0
+        self.UserID = 0
         self.CourseID = 0
         self.Timeslot = 0
 
     # return an booking item as a JSON object
     def json(self):
-        return {'BookingID': self.BookingID, 'MenteeID': self.MenteeID , 'CourseID': self.CourseID, 'Timeslot': self.Timeslot}
+        return {'BookingID': self.BookingID, 'UserID': self.UserID , 'CourseID': self.CourseID, 'Timeslot': self.Timeslot}
 
 def get_all():
     #Return all bookings as a JSON object
@@ -77,17 +76,18 @@ def create_booking(booking_input):
 
     # Create a new booking: set up data fields in the booking as a JSON object (i.e., a python dictionary)
     booking = dict()
-    print(cart_booking)
-    booking["MenteeID"] = cart_booking['MenteeID']
+    
+    booking["UserID"] = cart_booking['UserID']
     booking["BookingID"] = Booking.last_booking_id + 1
     booking["booking_item"] = []
     Course_item = cart_booking['Course_item']
     for index, ci in enumerate(Course_item):
         booking["booking_item"].append({"CourseID": Course_item[index]['CourseID'],
-                                "MentorID": Course_item[index]['MentorID'],
+                                "UserID": Course_item[index]['UserID'],
                                 "Timeslot": Course_item[index]['Timeslot']
         })
-
+    print("The booking is",cart_booking)
+    print("Processing the booking...")
     # check if booking creation is successful
     if len(booking["booking_item"])<1:
         status = 404
