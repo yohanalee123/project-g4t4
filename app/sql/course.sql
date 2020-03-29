@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 29, 2020 at 08:27 AM
+-- Generation Time: Mar 29, 2020 at 10:38 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -47,20 +47,16 @@ CREATE TABLE IF NOT EXISTS `course` (
 --
 
 INSERT INTO `course` (`CourseID`, `CourseName`, `CourseInfo`, `CourseType`, `Price`, `MentorID`, `Availability`, `Image`, `ListDate`) VALUES
-(97, 'SQL in Nutshell', 'Learn SQL with SSMS', 'Technology', 21.5, 0, NULL, 'images/sql.jpg', NULL),
-(98, 'Cooking', 'Learn how to cook to satisfy your MIL', 'Baking & Cooking', 99.9, 0, NULL, 'images/cooking.jpg', NULL),
-(91, 'Understanding People', 'Learn to understand human and their thoughts', 'General', 99.4, 0, NULL, 'images/post-7.jpg', NULL),
-(92, 'Happy in Workplace', 'Learn how to go home early after work', 'General', 94, 0, NULL, 'images/worl.jpg', NULL),
-(93, 'PHP Soup', 'Learn PHP and teach your future boss', 'Technology', 20.5, 0, NULL, 'images/sql.jpg', NULL),
-(94, 'Brief History of Time', 'Better remember when your aniversary', 'General', 20, 0, NULL, 'images/post-8.jpg', NULL),
-(95, 'IT\r\n', 'Study IT to get a bright future and compete with your cousins', 'Technology', 1, 0, NULL, 'images/post-9.jpg', NULL),
-(96, 'Founder of Php', 'Learn from the founder of PHP about Java', 'Technology', 34, 0, NULL, 'images/php.jpg', NULL),
-(90, 'CT', 'Code with efficiency to make your code run faster', 'Technology', 99.4, 0, NULL, 'images/post-6.jpg', NULL),
-(100, 'i want 2 die', 'asd', 'Technology', 11, 99, 'Monday Tuesday Wednesday ', 'images/killmyself.png', NULL),
-(99, 'I want die', 'Depression', 'Technology', 99, 10, 'Monday Tuesday Wednesday Thursday Friday ', 'images/die.png', NULL),
-(1, 'Kill Yohana', 'Kill Yohana', 'Technology', 1, 1, 'Wednesday Friday ', 'images/KillYohana.png', NULL),
-(2, 'testing datre', 'test date', 'Technology', 69, 1, 'Monday Thursday Friday ', 'images/date.png', NULL),
-(3, 'testdat', 'testsefsdfs', 'Technology', 12, 1, 'Tuesday Wednesday Thursday ', 'images/date2.png', '1996-12-12');
+(97, 'SQL in Nutshell', 'Learn SQL with SSMS', 'Technology', 21.5, 0, 'Monday Tuesday Thursday Friday', 'images/sql.jpg', '2020-03-29'),
+(98, 'Cooking', 'Learn how to cook to satisfy your MIL', 'Baking & Cooking', 99.9, 0, 'Tuesday Wednesday Friday Saturday', 'images/cooking.jpg', '2020-03-19'),
+(91, 'Understanding People', 'Learn to understand human and their thoughts', 'General', 99.4, 0, 'Wednesday Thursday Friday Sunday', 'images/post-7.jpg', '2020-03-01'),
+(92, 'Happy in Workplace', 'Learn how to go home early after work', 'General', 94, 0, 'Monday Friday Sunday', 'images/worl.jpg', '2020-02-12'),
+(93, 'PHP Soup', 'Learn PHP and teach your future boss', 'Technology', 20.5, 0, 'Wednesday Friday Sunday', 'images/sql.jpg', '2020-03-10'),
+(94, 'Brief History of Time', 'Better remember when your aniversary', 'General', 20, 0, 'Tuesday Wednesday Thursday Friday Saturday Sunday', 'images/post-8.jpg', '2020-02-23'),
+(95, 'IT\r\n', 'Study IT to get a bright future and compete with your cousins', 'Technology', 1, 0, 'Sunday', 'images/post-9.jpg', '2020-03-10'),
+(96, 'Founder of Php', 'Learn from the founder of PHP about Java', 'Technology', 34, 0, 'Monday Friday', 'images/php.jpg', '2020-01-06'),
+(90, 'CT', 'Code with efficiency to make your code run faster', 'Technology', 99.4, 0, 'Tuesday Thursday Friday', 'images/post-6.jpg', '2020-01-06'),
+(99, 'I want die', 'Depression', 'Technology', 99, 10, 'Monday Tuesday Wednesday Thursday Friday ', 'images/die.png', '2020-01-14');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
