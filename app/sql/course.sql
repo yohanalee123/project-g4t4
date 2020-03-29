@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 28, 2020 at 04:48 PM
--- Server version: 5.7.23
--- PHP Version: 7.2.10
+-- Generation Time: Mar 29, 2020 at 05:09 AM
+-- Server version: 5.7.19
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -46,15 +46,15 @@ CREATE TABLE IF NOT EXISTS `course` (
 --
 
 INSERT INTO `course` (`CourseID`, `CourseName`, `CourseInfo`, `CourseType`, `Price`, `MentorID`, `Availability`, `Image`) VALUES
-(97, 'SQL in Nutshell', 'Learn SQL with SSMS', 'Technology', 21.5, 0, NULL, NULL),
-(98, 'Cooking', 'Learn how to cook to satisfy your MIL', 'Baking & Cooking', 99.9, 0, NULL, NULL),
-(91, 'Understanding People', 'Learn to understand human and their thoughts', 'General', 99.4, 0, NULL, NULL),
-(92, 'Happy in Workplace', 'Learn how to go home early after work', 'General', 94, 0, NULL, NULL),
-(93, 'PHP Soup', 'Learn PHP and teach your future boss', 'Technology', 20.5, 0, NULL, NULL),
-(94, 'Brief History of Time', 'Better remember when your aniversary', 'General', 20, 0, NULL, NULL),
-(95, 'IT\r\n', 'Study IT to get a bright future and compete with your cousins', 'Technology', 1, 0, NULL, NULL),
-(96, 'Founder of Php', 'Learn from the founder of PHP about Java', 'Technology', 34, 0, NULL, NULL),
-(90, 'CT', 'Code with efficiency to make your code run faster', 'Technology', 99.4, 0, NULL, NULL),
+(97, 'SQL in Nutshell', 'Learn SQL with SSMS', 'Technology', 21.5, 0, NULL, 'images/sql.jpg'),
+(98, 'Cooking', 'Learn how to cook to satisfy your MIL', 'Baking & Cooking', 99.9, 0, NULL, 'images/cooking.jpg'),
+(91, 'Understanding People', 'Learn to understand human and their thoughts', 'General', 99.4, 0, NULL, 'images/post-7.jpg'),
+(92, 'Happy in Workplace', 'Learn how to go home early after work', 'General', 94, 0, NULL, 'images/worl.jpg'),
+(93, 'PHP Soup', 'Learn PHP and teach your future boss', 'Technology', 20.5, 0, NULL, 'images/sql.jpg'),
+(94, 'Brief History of Time', 'Better remember when your aniversary', 'General', 20, 0, NULL, 'images/post-8.jpg'),
+(95, 'IT\r\n', 'Study IT to get a bright future and compete with your cousins', 'Technology', 1, 0, NULL, 'images/post-9.jpg'),
+(96, 'Founder of Php', 'Learn from the founder of PHP about Java', 'Technology', 34, 0, NULL, 'images/php.jpg'),
+(90, 'CT', 'Code with efficiency to make your code run faster', 'Technology', 99.4, 0, NULL, 'images/post-6.jpg'),
 (100, 'i want 2 die', 'asd', 'Technology', 11, 99, 'Monday Tuesday Wednesday ', 'images/killmyself.png'),
 (99, 'I want die', 'Depression', 'Technology', 99, 10, 'Monday Tuesday Wednesday Thursday Friday ', 'images/die.png'),
 (1, 'Kill Yohana', 'Kill Yohana', 'Technology', 1, 1, 'Wednesday Friday ', 'images/KillYohana.png');
