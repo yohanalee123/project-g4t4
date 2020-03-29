@@ -200,6 +200,8 @@ crossorigin="anonymous">
               <th>Course Type</th>
               <th>Price</th>
               <th>Availability</th>
+              <th>Image</th>
+              <th>Listdate</th>
               <!-- <th>Image</th>
               <th>MentorID</th> -->
           </tr>
@@ -251,6 +253,8 @@ $("#error").hide();
                       "<td>" + course.CourseType + "</td>" +
                       "<td>" + course.Price + "</td>" +
                       "<td>" + course.Availability + "</td>";
+                      "<td>" + course.Image + "</td>";
+                      "<td>" + course.ListDate + "</td>";
                       // "<td>" + course.Image + "</td>";
                       // "<td>" + course.MentorID + "</td>";
                   rows += "<tbody><tr>" + eachRow + "</tr></tbody>";

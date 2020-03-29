@@ -70,9 +70,11 @@
         <input type="checkbox" id="Sunday" name="Sunday" value="Sunday">
         <label for="Sunday">Sunday</label><br>
         Image: <input name="Image" type="text" id="Image"><br>
+        <label for="ListDate">Listing Date:</label>
+        <input type="date" id="ListDate" name="ListDate"> <br>  
         <button id = "submit4" type="submit" class="btn btn-primary">Add Course Listing</button>
         <a id="homeBtn" class="btn btn-primary" 
-  href="index_old.html">Return Home</a>  
+  href="index.html">Return Home</a>  
         <form action="upload.php" method="post" enctype="multipart/form-data">
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
@@ -89,6 +91,7 @@
                     <th>MentorID</th>
                     <th>Availability</th>
                     <th>Image</th>
+                    <th>Listing date</th>
                 </tr>
             </thead>
         </table>
@@ -135,7 +138,8 @@
                             "<td>" + course.Price + "</td>" +
                             "<td>" + course.MentorID + "</td>" +
                             "<td>" + course.Availability + "</td>" +
-                            "<td>" + course.Image + "</td>";
+                            "<td>" + course.Image + "</td>" +
+                            "<td>" + course.ListDate + "</td>";
                             // "<td>" + course.Image + "</td>";
                             // "<td>" + course.MentorID + "</td>";
                         rows += "<tbody><tr>" + eachRow + "</tr></tbody>";
@@ -205,6 +209,7 @@
                 Availability +=  $('#Sunday').val()+ " ";
             }
             var Image = "images/" + $('#Image').val() + ".png"; 
+            var ListDate = $('#ListDate').val();
             console.log('hi')
             var serviceURL = "http://127.0.0.1:5000/course" + "/" + CourseID;
             console.log(serviceURL);
@@ -218,12 +223,12 @@
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify
                     ({ CourseName: CourseName, CourseInfo: CourseInfo, CourseType: CourseType,
-                     Price: Price,  MentorID: MentorID, Availability: Availability, Image: Image})
+                     Price: Price,  MentorID: MentorID, Availability: Availability, Image: Image, ListDate: ListDate})
                 });
                 console.log(response)
                 const data = await response.json();
                 console.log(data)
-                location.reload(true)
+                // location.reload(true)
             } catch (error) {
                 // Errors when calling the service; such as network error, 
                 // service offline, etc
