@@ -30,7 +30,7 @@ def receiveBooking():
     channel.start_consuming() # an implicit loop waiting to receive messages; it doesn't exit by default. Use Ctrl+C in the command window to terminate it.
 
 def callback(channel, method, properties, body): # required signature for the callback; no return
-    print("Received a booking by " + __file__)
+    print("Received a booking from " + __file__)
 
     result = processBooking(json.loads(body))
 
@@ -60,17 +60,17 @@ def callback(channel, method, properties, body): # required signature for the ca
     channel.basic_ack(delivery_tag=method.delivery_tag) # acknowledge to the broker that the processing of the request message is completed
 
 def processBooking(booking):
-    print("Processing a booking:")
+    print("The mentor is processing the booking...")
     # Can do anything here. E.g., publish a message to the error handler when processing fails.
     resultstatus = bool(random.getrandbits(1)) # simulate success/failure with a random True or False
-    result = {'status': resultstatus, 'message': 'Simulated random booking result.', 'booking': booking}
+    result = {'status': resultstatus, 'message': 'This is a simulated random booking result decided by mentor.', 'booking': booking}
     resultmessage = json.dumps(result, default=str) # convert the JSON object to a string
     if not resultstatus:
-        print("Reject booking.")
+        print("The mentor has reject the booking. A reply has been sent back to booking_reply.py")
     else:
-        print("Accept booking.")
+        print("The mentor has accept the booking. A reply has been sent back to booking_reply.py")
     return result
 
-if __name__ == "__main__":  # execute this program only if it is run as a script (not by 'import')
-    print("This is " + os.path.basename(__file__) + ": booking received from user...")
+if __name__ == "__main__":  
+    print("This is " + os.path.basename(__file__) + ": receving a booking from booking...")
     receiveBooking()

@@ -10,8 +10,8 @@ include_once 'src/contrib/Google_Oauth2Service.php';
  */
 $clientId = '1064425262989-oissu7nu87so595roadoon4c9qqcpt5j.apps.googleusercontent.com'; //Google client ID
 $clientSecret = 'b2eECUG3QW8H_tC5L-5sdJub'; //Google client secret
-$redirectURL = 'http://3.0.139.114/googlelogin'; //Callback URL
-#$redirectURL = 'http://127.0.0.1/googlelogin'
+#$redirectURL = 'http://3.0.139.114/app/parsa/google_login_api'; //Callback URL
+$redirectURL = 'http://127.0.0.1/clone/project-g4t4/app/parsa/google_login_api'
 
 //Call Google API
 $gClient = new Google_Client();

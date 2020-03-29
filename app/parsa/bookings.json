@@ -1,28 +1,28 @@
 {
     "bookings": [
       {
-        "MenteeID": "Jason Liu", 
+        "UserID": "jasonliu@123.com", 
         "BookingID": 13221, 
         "booking_item": [
           { 
-            "CourseID": "97", 
-            "MentorID": "David Lim",
+            "CourseID": 97, 
+            "UserID": "david_lim@google.com",
             "Timeslot": "Monday"
           },
           { 
-            "CourseID": "98", 
-            "MentorID": "May",
+            "CourseID": 98, 
+            "UserID": "may@yahoo.com",
             "Timeslot": "Tuesday"
           }
         ]
       },
       {
-        "MenteeID": "Tom", 
+        "UserID": "tom@hotmail.com", 
         "BookingID": 13222, 
         "booking_item": [
           { 
-            "CourseID": "101", 
-            "MentorID": "Mary Ng",
+            "CourseID": 101, 
+            "UserID": "mary.ng@smu.edu.sg",
             "Timeslot": "Friday"
           }
         ]
