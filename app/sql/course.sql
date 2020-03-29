@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 07, 2020 at 02:15 PM
--- Server version: 5.7.19
--- PHP Version: 7.1.9
+-- Generation Time: Mar 28, 2020 at 04:48 PM
+-- Server version: 5.7.23
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,26 +35,29 @@ CREATE TABLE IF NOT EXISTS `course` (
   `CourseInfo` varchar(1024) NOT NULL,
   `CourseType` varchar(64) NOT NULL,
   `Price` float NOT NULL,
+  `MentorID` int(11) NOT NULL,
   `Availability` varchar(2048) DEFAULT NULL,
   `Image` varchar(2048) DEFAULT NULL,
-  `MentorID` int(11) NOT NULL,
   PRIMARY KEY (`CourseID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=99 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`CourseID`, `CourseName`, `CourseInfo`, `CourseType`, `Price`, `Availability`, `Image`, `MentorID`) VALUES
-(97, 'SQL in Nutshell', 'Learn SQL with SSMS', 'Technology', 21.5, NULL, NULL, 0),
-(98, 'Cooking', 'Learn how to cook to satisfy your MIL', 'Baking & Cooking', 99.9, NULL, NULL, 0),
-(91, 'Understanding People', 'Learn to understand human and their thoughts', '', 99.4, NULL, NULL, 0),
-(92, 'Happy in Workplace', 'Learn how to go home early after work', '', 94, NULL, NULL, 0),
-(93, 'PHP Soup', 'Learn PHP and teach your future boss', 'Technology', 20.5, NULL, NULL, 0),
-(94, 'Brief History of Time', 'Better remember when your aniversary', '', 20, NULL, NULL, 0),
-(95, 'It', 'Study IT to get a bright future and compete with your cousins', 'Technology', 1, NULL, NULL, 0),
-(96, 'Founder of Php', 'Learn from the founder of PHP about Java', 'Technology', 34, NULL, NULL, 0),
-(90, 'CT', 'Code with efficiency to make your code run faster', 'Technology', 99.4, 'Monday', NULL, 0);
+INSERT INTO `course` (`CourseID`, `CourseName`, `CourseInfo`, `CourseType`, `Price`, `MentorID`, `Availability`, `Image`) VALUES
+(97, 'SQL in Nutshell', 'Learn SQL with SSMS', 'Technology', 21.5, 0, NULL, NULL),
+(98, 'Cooking', 'Learn how to cook to satisfy your MIL', 'Baking & Cooking', 99.9, 0, NULL, NULL),
+(91, 'Understanding People', 'Learn to understand human and their thoughts', 'General', 99.4, 0, NULL, NULL),
+(92, 'Happy in Workplace', 'Learn how to go home early after work', 'General', 94, 0, NULL, NULL),
+(93, 'PHP Soup', 'Learn PHP and teach your future boss', 'Technology', 20.5, 0, NULL, NULL),
+(94, 'Brief History of Time', 'Better remember when your aniversary', 'General', 20, 0, NULL, NULL),
+(95, 'IT\r\n', 'Study IT to get a bright future and compete with your cousins', 'Technology', 1, 0, NULL, NULL),
+(96, 'Founder of Php', 'Learn from the founder of PHP about Java', 'Technology', 34, 0, NULL, NULL),
+(90, 'CT', 'Code with efficiency to make your code run faster', 'Technology', 99.4, 0, NULL, NULL),
+(100, 'i want 2 die', 'asd', 'Technology', 11, 99, 'Monday Tuesday Wednesday ', 'images/killmyself.png'),
+(99, 'I want die', 'Depression', 'Technology', 99, 10, 'Monday Tuesday Wednesday Thursday Friday ', 'images/die.png'),
+(1, 'Kill Yohana', 'Kill Yohana', 'Technology', 1, 1, 'Wednesday Friday ', 'images/KillYohana.png');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
