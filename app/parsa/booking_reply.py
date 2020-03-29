@@ -61,5 +61,5 @@ def reply_callback(channel, method, properties, body): # required signature for 
 
 # Execute this program if it is run as a main script (not by 'import')
 if __name__ == "__main__":
-    print("This is " + os.path.basename(__file__) + ": listening for a reply from mentor for a booking...")
+    print("This is " + os.path.basename(__file__) + ": awaiting for a reply from mentor for a booking...")
     receiveBooking()
