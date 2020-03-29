@@ -3,7 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Technology</title>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseID = urlParams.get('id');
+    console.log(courseID);
+    document.write("<title>" + courseID + " </title>");
+</script>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,9 +73,9 @@
             <a class="nav-link text-uppercase text-dark" href="about.html">About</a>
           </li>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link text-uppercase text-dark" href="categories.html">Categories</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
@@ -91,9 +96,16 @@
 <!-- /page-title -->
 
 <!-- category post -->
+
 <section class="section">
   <div class="container">
-    <h5>Technology courses available</h5>
+      <script>
+          const urlParams2 = new URLSearchParams(window.location.search);
+          console.log(urlParams2)
+          const courseID2 = urlParams2.get('id');
+          
+          document.write("<h5>" + courseID2 + " courses available</h5>");
+      </script>
     <div class="row" id="courses">
         <script>
             // // Helper function to display error message
@@ -111,7 +123,9 @@
             $(async () => {
     
               // Change serviceURL to your own
-              var serviceURL = "http://127.0.0.1:5000/course/Technology";
+              const urlParams = new URLSearchParams(window.location.search);
+              const courseID = urlParams.get('id');
+              var serviceURL = "http://127.0.0.1:5000/course" + "/" + courseID;
               console.log(serviceURL)
               try {
                 const response =
