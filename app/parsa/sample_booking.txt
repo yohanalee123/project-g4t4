@@ -1,14 +1,14 @@
 {
-    "MenteeID": "Wong Kai", 
+    "UserID": "james@123.com", 
     "Course_item": [
          { 
-            "CourseID": "97", 
-            "MentorID": "David Lim",
+            "CourseID": 97, 
+            "UserID": "david_lim@google.com",
             "Timeslot": "Monday"
           },
           { 
-            "CourseID": "101", 
-            "MentorID": "Mary Ng",
+            "CourseID": 101, 
+            "UserID": "mary.ng@smu.edu.sg",
             "Timeslot": "Friday"
           }
     ]
