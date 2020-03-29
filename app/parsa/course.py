@@ -22,8 +22,9 @@ class Course(db.Model):
     MentorID = db.Column(db.Integer, nullable=False)
     Availability = db.Column(db.String(2048), nullable=True)
     Image = db.Column(db.String(2048), nullable=True)
+    ListDate = db.Column(db.Date, nullable = False)
 
-    def __init__(self ,CourseID, CourseName, CourseInfo, CourseType, Price, MentorID, Availability, Image):
+    def __init__(self ,CourseID, CourseName, CourseInfo, CourseType, Price, MentorID, Availability, Image, ListDate):
         self.CourseID = CourseID
         self.CourseName = CourseName
         self.CourseInfo = CourseInfo
@@ -32,10 +33,11 @@ class Course(db.Model):
         self.MentorID = MentorID
         self.Availability = Availability
         self.Image = Image
+        self.ListDate = ListDate
         
  
     def json(self):
-        return {"CourseID": self.CourseID, "CourseName": self.CourseName, "CourseInfo": self.CourseInfo, "CourseType": self.CourseType, "Price": self.Price, "MentorID": self.MentorID, "Availability": self.Availability, "Image": self.Image}
+        return {"CourseID": self.CourseID, "CourseName": self.CourseName, "CourseInfo": self.CourseInfo, "CourseType": self.CourseType, "Price": self.Price, "MentorID": self.MentorID, "Availability": self.Availability, "Image": self.Image, "ListDate": self.ListDate}
  
 @app.route("/course")
 def get_all():
