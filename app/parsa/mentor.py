@@ -1,7 +1,6 @@
 import json
 import sys
 import os
-import random
 
 # Communication patterns:
 # Use a message-broker with 'direct' exchange to enable interaction
@@ -60,15 +59,11 @@ def callback(channel, method, properties, body): # required signature for the ca
     channel.basic_ack(delivery_tag=method.delivery_tag) # acknowledge to the broker that the processing of the request message is completed
 
 def processBooking(booking):
-    print("The mentor is processing the booking...")
-    # Can do anything here. E.g., publish a message to the error handler when processing fails.
-    resultstatus = bool(random.getrandbits(1)) # simulate success/failure with a random True or False
-    result = {'status': resultstatus, 'message': 'This is a simulated random booking result decided by mentor.', 'booking': booking}
+    print("The mentor is notified by the booking request...")
+    resultstatus = True
+    result = {'status': resultstatus, 'booking': booking}
     resultmessage = json.dumps(result, default=str) # convert the JSON object to a string
-    if not resultstatus:
-        print("The mentor has reject the booking. A reply has been sent back to booking_reply.py")
-    else:
-        print("The mentor has accept the booking. A reply has been sent back to booking_reply.py")
+    print("The mentor has accepted the booking. A reply has been sent back to booking_reply.py")
     return result
 
 if __name__ == "__main__":  
