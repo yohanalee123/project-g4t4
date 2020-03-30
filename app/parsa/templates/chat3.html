@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Flask_Chat_App</title>
+    <!-- DISCLAIMER: this code is developed with reference to 
+    https://codeburst.io/building-your-first-chat-application-using-flask-in-7-minutes-f98de4adfa5d -->
+  <title>mentor. Public Chatroom</title>
 </head>
 <body>
+    <h1>Welcome to the mentor. Public chatroom. Please be nice!</h1>
+  <div class="message_holder">
+  <!-- jinja2 syntax to print the messages received from the MySQL db thru chat3.py-->
+  {% for msg in messages %}
+    <div><b style="color: #000">{{msg.User}}</b>  {{msg.Message}}</div>
+  {% endfor %}
+  </div>
 
-  <h3 style='color: #ccc;font-size: 30px;'>No message yet..</h3>
-  <div class="message_holder"></div>
-
+    <!-- form for user's to input their messages-->
   <form action="" method="POST">
     <input type="text" class="username" placeholder="User Name"/>
-    <input type="text" class="message" placeholder="Messages"/>
+    <input type="textbox" class="message" placeholder="Messages"/>
     <input type="submit"/>
   </form>
 
@@ -18,16 +25,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
   <script type="text/javascript">
-    var socket = io.connect('http://127.0.0.1:5003' );
+    var socket = io.connect('http://127.0.0.1:5003' ); // connects to the socket service running from chat3.py
     socket.on( 'connect', function() {
-      socket.emit( 'my event', {
-        data: 'User Connected'
+      socket.emit( 'my event', { // emits a notification into the console when a user is connected
+        data: 'User Connected' 
       } )
       var form = $( 'form' ).on( 'submit', function( e ) {
         e.preventDefault() // prevents the form from submitting first as it emits the messages
         let user_name = $( 'input.username' ).val()
         let user_input = $( 'input.message' ).val()
-        socket.emit( 'my event', { // emits the messages through an event called 'my event'
+        socket.emit( 'my event', { // emits the messages entered by the user, through an event called 'my event', to the .py file 
           user_name : user_name,
           message : user_input
         } ) 
@@ -35,10 +42,11 @@
       } )
     } )
     socket.on( 'my response', function( msg ) {
-      console.log( msg )
+      console.log( msg ) // logs the msg transmitted back from the service/.py file for debugging purposes
       if( typeof msg.user_name !== 'undefined' ) {
-        $( 'h3' ).remove() // removes the "no messages yet" text
+        // $( 'h3' ).remove() // removes the "no messages yet" text
         $( 'div.message_holder' ).append( '<div><b style="color: #000">'+msg.user_name+'</b> '+msg.message+'</div>' )
+
       }
     })
   </script>
