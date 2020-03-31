@@ -89,10 +89,41 @@
               console.log('Family Name: ' + profile.getFamilyName());
               console.log("Image URL: " + profile.getImageUrl());
               console.log("Email: " + profile.getEmail());
-        
+
               // The ID token you need to pass to your backend:
               var id_token = googleUser.getAuthResponse().id_token;
               console.log("ID Token: " + id_token);
+
+              
+              $(async() =>
+            {
+                
+            // Change serviceURL to your own
+            // var Name = profile.getGivenName();
+            var Email = profile.getEmail();
+            var serviceURL = "http://127.0.0.1:5001/user" + "/" + Email;
+            console.log(serviceURL);
+            try {
+                const response =
+                 await fetch(
+                    serviceURL, 
+                    { 
+                    method: 'POST',
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify
+                    ({ Name: Name })
+                });
+                console.log(response)
+                const data = await response.json();
+                console.log(data)
+            } catch (error) {
+                // Errors when calling the service; such as network error, 
+                // service offline, etc
+                showError
+                ('There is a problem adding the book, please try again later.<br />'+ error);
+           
+        } // error
+        });
             }
           </script>
         </ul>
