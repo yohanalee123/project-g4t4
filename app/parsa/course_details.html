@@ -203,7 +203,15 @@
             const urlParams6 = new URLSearchParams(window.location.search);
             const avail = urlParams6.get('avail');
             var test = avail.split(" ");
+            var removeItem = "";
+            test = jQuery.grep(test, function(value) {
+              return value != removeItem;
+            });
+
+
+            // console.log(avail)
             for (const item of test) {
+              // console.log(item)
               document.write("<li>" + item + "</li>");
             }
           </script>

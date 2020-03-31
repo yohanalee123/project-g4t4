@@ -79,10 +79,32 @@
           <li class="nav-item">
             <a class="nav-link text-uppercase text-dark" href="http://127.0.0.1:5003">Chatroom</a>
           </li>
-          <h3 style="text-align:center;" id = 'username'></h3>
-          <h6 style="text-align:center;" id = 'id'></h6>
           <div id='googlelogin' class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" ></div>
+          <li>
+            <button id="logout" style = "border-radius: 50px;" type="submit" class="btn btn-primary">Logout</button>
+          </li>
           
+
+          <h3 style="text-align:center;" id = 'username'></h3>
+          <h6 style="text-align:center; height: 6px" id = 'id'></h6>
+          <script>$('#logout').hide()</script>
+          <script>
+            console.log(localStorage.getItem('mID'))
+               if (localStorage.getItem('mID')) {
+                $('#googlelogin').hide()
+        document.getElementById("username").innerHTML = localStorage.getItem("username")
+            document.getElementById("id").innerHTML = "ID: " + localStorage.getItem("mID")
+            $('#logout').show()
+      }
+          </script>
+          <script>
+            $("#logout").click(function() { 
+             localStorage.removeItem("username");
+             localStorage.removeItem("mID");
+             $('#logout').hide();
+             location.reload(true);
+            });
+          </script>
           <!--google sign in button-->
           <script>
             function onSignIn(googleUser) {
@@ -99,7 +121,14 @@
               // The ID token you need to pass to your backend:
               var id_token = googleUser.getAuthResponse().id_token;
               // console.log("ID Token: " + id_token);
-
+              var ID = "";
+              for (i = 0; i < 9; i++) {
+              ID += profile.getId()[i]
+            }
+            var Name = profile.getGivenName();
+            var PrintName = Name[0].toUpperCase() + Name.substr(1, Name.length);
+            localStorage.setItem("mID", ID)
+            localStorage.setItem("username", PrintName)
               
               $(async() =>
             {
@@ -111,9 +140,9 @@
             for (i = 0; i < 9; i++) {
               ID += profile.getId()[i]
             }
-            console.log(ID)
+            // console.log(ID)
             var serviceURL = "http://127.0.0.1:5001/user" + "/" + Email;
-            console.log(serviceURL);
+            // console.log(serviceURL);
             try {
                 const response =
                  await fetch(
@@ -132,21 +161,26 @@
                 // service offline, etc
                 showError
                 ('There is a problem adding the user, please try again later.<br />'+ error);
-           
         } // error
         })
         var Name = profile.getGivenName();
         var PrintName = Name[0].toUpperCase() + Name.substr(1, Name.length);
+        console.log(localStorage.getItem('mID'))
+
         var ID = "";
             for (i = 0; i < 9; i++) {
               ID += profile.getId()[i]
             }
         $('#googlelogin').hide()
+        document.getElementById("username").innerHTML = PrintName
+            document.getElementById("id").innerHTML = "ID: " + ID
+            $('#logout').show()
         // document.writeIn("<li class=\"nav-item\">" +
         //     "<a class=\"nav-link text-uppercase text-dark\">Hi " + Name + "</a></li>")
-            document.getElementById("username").innerHTML = PrintName
-            document.getElementById("id").innerHTML = "ID: " + ID
+            
             }
+
+         
           </script>
         </ul>
       </div>

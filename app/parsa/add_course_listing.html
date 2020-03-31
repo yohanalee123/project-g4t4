@@ -106,7 +106,14 @@ label {
                     <!-- if got time convert this to pull from DB & add admin function to add new course type -->
         Course Info: <input name="CourseInfo" type="text" id="CourseInfo"><br>            
         Price: <input name="Price" type="text" id="Price"><br>
-        MentorID: <input name="MentorID" type="text" id="MentorID"><br>
+        MentorID: <input name="MentorID" type="text" id="MentorID" value = '' ><br>
+        <script>
+            console.log(localStorage.getItem("mID"));
+            if (localStorage.getItem("mID")){
+                document.getElementById("MentorID").value = localStorage.getItem("mID");
+            }
+        </script>
+        
         Availability:<br>
         <input type="checkbox" id="Monday" name="Monday" value="Monday">
         <label for="Monday">Monday</label><br>
@@ -262,11 +269,11 @@ label {
             }
             var Image = "images/" + $('#Image').val() + ".png"; 
             var ListDate = $('#ListDate').val();
-            console.log('hi')
+            // console.log('hi')
             var serviceURL = "http://127.0.0.1:5000/course" + "/" + CourseID;
             console.log(serviceURL);
             try {
-                console.log('hi')
+                // console.log('hi')
                 const response =
                  await fetch(
                     serviceURL, 
@@ -280,7 +287,8 @@ label {
                 console.log(response)
                 const data = await response.json();
                 console.log(data)
-                // location.reload(true)
+                // localStorage.removeItem("mID");
+                location.reload(true)
             } catch (error) {
                 // Errors when calling the service; such as network error, 
                 // service offline, etc
