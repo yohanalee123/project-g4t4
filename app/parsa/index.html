@@ -382,21 +382,21 @@
                             "<h4 class=\"title-border\"><a class=\"text-dark\" href=\"course_details.html" + "?id=" + course.CourseID + "\">" + course.CourseName + "</a></h4>" +
                             "<p>" + course.CourseInfo + "</p>" +
                             "<a href=\"course_details.html" + "?id=" + course.CourseID + "&name=" + course.CourseName + "&date=" + course.ListDate + "&avail=" + course.Availability + "&name=" + document.getElementById('username').innerHTML +"\" class=\"btn btn-transparent\">read more</a>" +
-                    "</article>" +
+                            "</article>" +
                             "</div>";
-                          rows += foundcourse;
-                        }
-                      } 
-                      document.getElementById('courses').innerHTML = rows
-                  }
+                        rows += foundcourse;
+                      }
+                    } 
+                  document.getElementById('courses').innerHTML = rows
+                }
                  
-              } catch (error) {
+               } catch (error) {
                   // Errors when calling the service; such as network error, 
                   // service offline, etc
                   showError
                   ('There is a problem retrieving the specific course, please try again later.<br />'+ error);
              
-          } // error
+               } // error
               })
         });
       </script>
