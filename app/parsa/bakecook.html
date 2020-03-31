@@ -58,7 +58,7 @@
 
   <header class="navigation">
     <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="index.html"><img class="img-fluid" src="images/logo.png" alt="parsa"></a>
+      <a class="navbar-brand" href="index.html"><img class="img-fluid" src="images/logolessnoise.png" alt="parsa"></a>
       <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navogation"
         aria-controls="navogation" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -154,8 +154,8 @@
                           "<p class=\"text-uppercase mb-2\">" + course.CourseType + "</p>" +
                           "<h4 class=\"title-border\"><a class=\"text-dark\" href=\"course_details.html" + "?id=" + course.CourseID + "\">" + course.CourseName + "</a></h4>" +
                           "<p>" + course.CourseInfo + "</p>" +
-                          "<a href=\"course_details.html" + "?id=" + course.CourseID + "\" class=\"btn btn-transparent\">read more</a>" +
-                        "</article>" +
+                          "<a href=\"course_details.html" + "?id=" + course.CourseID + "&name=" + course.CourseName + "&date=" + course.ListDate + "&avail=" + course.Availability + "\" class=\"btn btn-transparent\">read more</a>" +
+                    "</article>" +
                       "</div>";
     
                     console.log(eachRow)
@@ -186,36 +186,47 @@
 <!-- /category post -->
 
 <footer class="bg-secondary">
-    <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-            <a href="index.html"><img src="images/logo.png" alt="persa" class="img-fluid"></a>
-          </div>
-          <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-            <h6>Address</h6>
-            <ul class="list-unstyled">
-              <li class="font-secondary text-dark">Singapore</li>
-              <li class="font-secondary text-dark">81 Victoria St, Singapore 188065</li>
-            </ul>
-          </div>
-          <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-            <h6>Contact Info</h6>
-            <ul class="list-unstyled">
-              <li class="font-secondary text-dark">Tel: 6828 0100</li>
-              <li class="font-secondary text-dark">Mail: mentor@mymail.com</li>
-            </ul>
-          </div>
-
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 col-sm-6 mb-4 mb-md-0">
+          <a href="index.html"><img src="images/logo.png" alt="persa" class="img-fluid"></a>
         </div>
+        <div class="col-md-2 col-sm-6 mb-4 mb-md-0">
+          <h6>Address</h6>
+          <ul class="list-unstyled">
+            <li class="font-secondary text-dark">Singapore</li>
+            <li class="font-secondary text-dark">81 Victoria St, Singapore 188065</li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-6 mb-4 mb-md-0">
+          <h6>Contact Info</h6>
+          <ul class="list-unstyled">
+            <li class="font-secondary text-dark">Tel: 6828 0100</li>
+            <li class="font-secondary text-dark">Mail: me@mentor.com</li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-6 mb-4 mb-md-0">
+          <h6>Follow</h6>
+          <ul class="list-inline d-inline-block">
+            <li class="list-inline-item"><a href="https://www.smu.edu.sg/faculty/profile/9617/JIANG-Lingxiao" class="text-dark"><i class="ti-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="https://twitter.com/mentor_esdg4t4" class="text-dark"><i class="ti-twitter-alt"></i></a></li>
+            <li class="list-inline-item"><a href="https://www.linkedin.com/in/wang-piao-068321193/?originalSubdomain=sg" class="text-dark"><i class="ti-linkedin"></i></a></li>
+          </ul>
+          </div>
+          <br><br><br><br><br>  
+          <div class="col-md-4 col-sm-6 mb-4 mb-md-0"> 
+          <a class="twitter-timeline" data-width="300" data-height="300" href="https://twitter.com/mentor_esdg4t4?ref_src=twsrc%5Etfw">Tweets by mentor_esdg4t4</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>        
       </div>
     </div>
-    <div class="text-center pb-3">
-      <p class="mb-0">Copyright ©
-        <script>var CurrentYear = new Date().getFullYear()
-          document.write(CurrentYear)</script> a theme by <a href="https://themefisher.com/">themefisher.com</a></p>
-    </div>
-  </footer>
+  </div>
+  <div class="text-center pb-3">
+    <p class="mb-0">Copyright ©
+      <script>var CurrentYear = new Date().getFullYear()
+        document.write(CurrentYear)</script> a theme by <a href="https://themefisher.com/">themefisher.com</a></p>
+  </div>
+</footer>
 
 <!-- jQuery -->
 <script src="plugins/jQuery/jquery.min.js"></script>

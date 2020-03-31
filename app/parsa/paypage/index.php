@@ -75,7 +75,7 @@
         <!-- Used to display form errors -->
         <div id="card-errors" role="alert"></div>
       </div>
-      <button>Submit Payment</button>
+      <button style = "border-radius: 50px; background-color : #ff6f00; border: none;" > Submit Payment</button>
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

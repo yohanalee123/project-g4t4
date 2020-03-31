@@ -16,32 +16,42 @@ class User(db.Model):
 
     Email = db.Column(db.String(2048), primary_key=True)
     Name = db.Column(db.String(2048), nullable=False)
-    
-    def __init__(self, Name, Email):
+    ID = db.Column(db.String(2048), nullable=False)
+
+    def __init__(self, Email, Name, ID):
         self.Email = Email
         self.Name = Name
+        self.ID = ID
         
         
     def json(self):
-        return {"Email": self.Email, "Name": self.Name}
+        return {"Email": self.Email, "Name": self.Name, "ID" : self.ID}
  
 @app.route("/user")
 def get_all():
 	return jsonify({"users": [user.json() for user in User.query.all()]})
  
-@app.route("/user/<string:Email>")
-def find_by_Email(Email):
-    user = User.query.filter_by(Email=Email).first()
-    if user:
-        return jsonify(user.json())
-    return jsonify({"message": "User's Email not found."}), 404
 
-@app.route("/user/<string:Name>")
-def find_by_Name(Name):
-    user = User.query.filter_by(Name=Name).first()
+@app.route("/user/<string:ID>")
+def find_by_ID(ID):
+    user = User.query.filter_by(ID=ID).first()
     if user:
         return jsonify(user.json())
-    return jsonify({"message": "User's Name not found."}), 404
+    return jsonify({"message": "User's ID not found."}), 404
+
+# @app.route("/user/<string:Email>")
+# def find_by_Email(Email):
+#     user = User.query.filter_by(Email=Email).first()
+#     if user:
+#         return jsonify(user.json())
+#     return jsonify({"message": "User's Email not found."}), 404
+
+# @app.route("/user/<string:Name>")
+# def find_by_Name(Name):
+#     user = User.query.filter_by(Name=Name).first()
+#     if user:
+#         return jsonify(user.json())
+#     return jsonify({"message": "User's Name not found."}), 404
 
 # @app.route("/course/<string:CourseType>")
 # def find_by_CourseType(CourseType):
