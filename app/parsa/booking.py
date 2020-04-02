@@ -14,41 +14,40 @@ import csv
 
 class Booking:
     # Load existing bookings from a JSON file.
-    with open('Bookings.json') as booking_json_file:
-        bookings = json.load(booking_json_file)
+    with open('Booking.json') as booking_json_file:
+        booking = json.load(booking_json_file)
     booking_json_file.close()
 
     # Find the max of all existing "BookingID" to be used as the last BookingID
-    last_booking_id = max([ o["BookingID"] for o in bookings["bookings"] ])
+    last_booking_id = max([ o["BookingID"] for o in booking["booking"] ])
 
 def bookings_json():
     #return all bookings as a JSON object (not a string)
-    return Booking.bookings
+    return Booking.booking
     
 def bookings_save(bookings_file):
     # save all bookings to a file
     with open(bookings_file, 'w') as booking_json_outfile:
-        json.dump(Booking.bookings, booking_json_outfile, indent=2, default=str) # convert a JSON object to a string
+        json.dump(Booking.booking, booking_json_outfile, indent=2, default=str) # convert a JSON object to a string
     booking_json_outfile.close()
 
 class Booking_Item:
     def __init__(self):
-        self.BookingID = 0
-        self.UserID = 0
         self.CourseID = 0
+        self.MentorID = 0
         self.Timeslot = 0
 
     # return an booking item as a JSON object
     def json(self):
-        return {'BookingID': self.BookingID, 'UserID': self.UserID , 'CourseID': self.CourseID, 'Timeslot': self.Timeslot}
+        return {'CourseID': self.CourseID, 'MentorID': self.MentorID , 'Timeslot': self.Timeslot}
 
 def get_all():
     #Return all bookings as a JSON object
-    return Booking.bookings
+    return Booking.booking
  
 def find_by_booking_id(BookingID):
     #Return a specific booking of the BookingID
-    booking = [ o for o in Booking.bookings["bookings"] if o["BookingID"]==BookingID ]
+    booking = [ o for o in Booking.booking["bookings"] if o["BookingID"]==BookingID ]
     if len(booking)==1:
         return booking[0]
     elif len(booking)>1:
@@ -77,13 +76,13 @@ def create_booking(booking_input):
     # Create a new booking: set up data fields in the booking as a JSON object (i.e., a python dictionary)
     booking = dict()
     
-    booking["UserID"] = cart_booking['UserID']
+    booking["MenteeID"] = cart_booking['MenteeID']
     booking["BookingID"] = Booking.last_booking_id + 1
     booking["booking_item"] = []
-    Course_item = cart_booking['Course_item']
+    Course_item = cart_booking['booking_item']
     for index, ci in enumerate(Course_item):
         booking["booking_item"].append({"CourseID": Course_item[index]['CourseID'],
-                                "UserID": Course_item[index]['UserID'],
+                                "MentorID": Course_item[index]['MentorID'],
                                 "Timeslot": Course_item[index]['Timeslot']
         })
     print("The booking is",cart_booking)
@@ -98,11 +97,11 @@ def create_booking(booking_input):
         return {'status': status, 'message': message}
 
     # Append the newly created booking to the existing bookings
-    Booking.bookings["bookings"].append(booking)
+    Booking.booking["booking"].append(booking)
     # Increment the last_booking_id; if using a DB, DBMS can manage this
     Booking.last_booking_id = Booking.last_booking_id + 1
     # Write the newly created booking back to the file for permanent storage; if using a DB, this will be done by the DBMS
-    bookings_save("bookings.new.json")
+    bookings_save("booking.new.json")
 
     # Return the newly created booking when creation is succssful
     if status==200:
