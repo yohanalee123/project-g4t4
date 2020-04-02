@@ -120,14 +120,18 @@
       
     </form>
     <!-- <button onclick="goBack()" style = "border-radius: 50px; background-color : #ff6f00; border: none;">Go Back</button> -->
-
-    <button onclick="goBack()" id="webpage" style = "border-radius: 50px; border: none;" >Go Back</button>
-    
-
+    <button id="goHome" style = "border-radius: 50px; border: none;">Go Back</button>
     <script>
-      function goBack() {
-        window.history.back();
-    }
+      $("#goHome").click(function() {
+        document.location.href = '../';
+    });
+    // <button onclick="goBack()" id="webpage" style = "border-radius: 50px; border: none;">Go Back</button>
+    
+    
+    // <script>
+    //   function goBack() {
+    //     document.location.href = "http://localhost/project-g4t4/app/parsa/";
+    // });
     </script>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
