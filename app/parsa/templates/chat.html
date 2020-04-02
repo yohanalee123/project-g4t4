@@ -78,6 +78,9 @@
         e.preventDefault() // prevents the form from submitting first as it emits the messages
         let user_name = $( 'input.username' ).val()
         let user_input = $( 'input.message' ).val()
+        if (!user_name || !user_input){
+          return
+        }
         socket.emit( 'my event', { // emits the messages entered by the user, through an event called 'my event', to the .py file 
           user_name : user_name,
           message : user_input
@@ -89,8 +92,7 @@
       console.log( msg ) // logs the msg transmitted back from the service/.py file for debugging purposes
       if( typeof msg.user_name !== 'undefined' ) {
         // $( 'h3' ).remove() // removes the "no messages yet" text
-        $( 'div.message_holder' ).append( '<div><b style="color: #000">'+msg.user_name+'</b> '+msg.message+'</div>' )
-
+        $( 'div.message_holder' ).append( '<div><b style="color: #000; margin-left: 20%;">'+msg.user_name+'</b> '+msg.message+'</div>' )
       }
     })
   </script>

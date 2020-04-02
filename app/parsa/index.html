@@ -87,7 +87,7 @@
           <li class="nav-item" style="text-align:center; height: 6px" id = 'id'></li>
           
           <li class="nav-item">
-            <i id="logout" type="submit" class="fa fa-power-off" style="font-size:40px; color:orange; padding-top: 10px; padding-left: 10px;"></i>
+            <i id="logout" type="submit" class="fa fa-power-off" style="font-size:40px; color:#ff6f00; padding-top: 10px; padding-left: 10px;"></i>
           </li>
           <script>$('#logout').hide()</script>
           <script>
@@ -262,7 +262,12 @@
   <div class="container">
     <input class="form-control mr-sm-2" name="CourseName" type="text" id="CourseName" placeholder="Search for a course e.g. cooking, php etc."><br>
     <button id="SearchCourseBtn" style = "border-radius: 50px;" type="submit" class="btn btn-primary">Search for Course</button>
-    <a id="addCourseBtn" style = "border-radius: 50px;" class="btn btn-primary" href="add_course_listing.html">Add a Course Listing</a>
+    <button id="addCourseBtn" style = "border-radius: 50px;"  class="btn btn-primary">Add a Course Listing</button>
+    <script>
+      $("#addCourseBtn").click(function() {
+        document.location.href = 'add_course_listing.html';
+    });
+    </script>
   </div>
   <h3 style="text-align:center;" >All Courses</h3>
   <section class="section">
