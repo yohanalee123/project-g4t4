@@ -16,25 +16,25 @@ class User(db.Model):
 
     Email = db.Column(db.String(2048), primary_key=True)
     Name = db.Column(db.String(2048), nullable=False)
-    ID = db.Column(db.String(2048), nullable=False)
+    UserID = db.Column(db.String(2048), nullable=False)
 
-    def __init__(self, Email, Name, ID):
+    def __init__(self, Email, Name, UserID):
         self.Email = Email
         self.Name = Name
-        self.ID = ID
+        self.UserID = UserID
         
         
     def json(self):
-        return {"Email": self.Email, "Name": self.Name, "ID" : self.ID}
+        return {"Email": self.Email, "Name": self.Name, "UserID" : self.UserID}
  
 @app.route("/user")
 def get_all():
 	return jsonify({"users": [user.json() for user in User.query.all()]})
  
 
-@app.route("/user/<string:ID>")
-def find_by_ID(ID):
-    user = User.query.filter_by(ID=ID).first()
+@app.route("/user/<string:UserID>")
+def find_by_UserID(UserID):
+    user = User.query.filter_by(UserID=UserID).first()
     if user:
         return jsonify(user.json())
     return jsonify({"message": "User's ID not found."}), 404
