@@ -43,7 +43,7 @@ def sessions():
     It also renders the .html file on the browser (instead of this .py file) when the service is run.
     """
     messages = Chat.query.all()
-    return render_template('chat3.html', messages=messages)
+    return render_template('chat.html', messages=messages)
     
 
 if __name__ == '__main__':
