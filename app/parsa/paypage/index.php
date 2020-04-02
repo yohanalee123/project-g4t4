@@ -69,8 +69,8 @@
        <input type="text" name="first_name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="First Name">
        <input type="text" name="last_name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Last Name">
        <input type="email" name="email" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Email Address">
-       <input type="hidden" name="CourseName2" id = "CourseName2" class="form-control mb-3 StripeElement StripeElement--empty" value='' placeholder="CourseName">
-       <input type="hidden" name="Price2" id = "Price2" class="form-control mb-3 StripeElement StripeElement--empty" value='' placeholder="Price">
+       <input type="hidden" name="CourseName2" id = "CourseName2" class="form-control mb-3 StripeElement StripeElement--empty" value=''>
+       <input type="hidden" name="Price2" id = "Price2" class="form-control mb-3 StripeElement StripeElement--empty" value=''>
        <script>
             $(async () => {
               // Change serviceURL to your own

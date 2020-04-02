@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 31, 2020 at 06:40 AM
+-- Generation Time: Apr 02, 2020 at 12:42 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -55,8 +55,7 @@ INSERT INTO `course` (`CourseID`, `CourseName`, `CourseInfo`, `CourseType`, `Pri
 (94, 'Brief History of Time', 'Better remember when your aniversary', 'General', 20, 115115966, 'Tuesday Wednesday Thursday Friday Saturday Sunday', 'images/post-8.jpg', '2020-02-23'),
 (95, 'IT\r\n', 'Study IT to get a bright future and compete with your cousins', 'Technology', 1, 115115966, 'Sunday', 'images/post-9.jpg', '2020-03-10'),
 (96, 'Founder of Php', 'Learn from the founder of PHP about Java', 'Technology', 34, 115115966, 'Monday Friday', 'images/php.jpg', '2020-01-06'),
-(90, 'CT', 'Code with efficiency to make your code run faster', 'Technology', 99.4, 115115966, 'Tuesday Thursday Friday', 'images/post-6.jpg', '2020-01-06'),
-(99, 'I want die', 'Depression', 'Technology', 99, 115115966, 'Monday Tuesday Wednesday Thursday Friday ', 'images/die.png', '2020-01-14');
+(90, 'CT', 'Code with efficiency to make your code run faster', 'Technology', 99.4, 115115966, 'Tuesday Thursday Friday', 'images/post-6.jpg', '2020-01-06');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

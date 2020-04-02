@@ -91,11 +91,11 @@
           </li>
           <script>$('#logout').hide()</script>
           <script>
-            console.log(localStorage.getItem('mID'))
+            // console.log(localStorage.getItem('mID'))
                if (localStorage.getItem('mID')) {
                 $('#googlelogin').hide()
                 document.getElementById("username").innerHTML = localStorage.getItem("username")
-                document.getElementById("id").innerHTML = "ID: " + localStorage.getItem("mID")
+                document.getElementById("id").innerHTML = "UserID: " + localStorage.getItem("mID")
                 $('#logout').show()
               }
           </script>
@@ -123,13 +123,13 @@
               // The ID token you need to pass to your backend:
               var id_token = googleUser.getAuthResponse().id_token;
               // console.log("ID Token: " + id_token);
-              var ID = "";
+              var UserID = "";
               for (i = 0; i < 9; i++) {
-              ID += profile.getId()[i]
+                UserID += profile.getId()[i]
               }
               var Name = profile.getGivenName();
               var PrintName = Name[0].toUpperCase() + Name.substr(1, Name.length);
-              localStorage.setItem("mID", ID)
+              localStorage.setItem("mID", UserID)
               localStorage.setItem("username", PrintName)
               
               $(async() =>
@@ -168,13 +168,13 @@
               var PrintName = Name[0].toUpperCase() + Name.substr(1, Name.length);
               console.log(localStorage.getItem('mID'))
 
-              var ID = "";
+              var UserID = "";
                 for (i = 0; i < 9; i++) {
-                  ID += profile.getId()[i]
+                  UserID += profile.getId()[i]
                 }
               $('#googlelogin').hide()
               document.getElementById("username").innerHTML = PrintName
-              document.getElementById("id").innerHTML = "ID: " + ID
+              document.getElementById("id").innerHTML = "UserID: " + UserID
               $('#logout').show()
               }    
           </script>
