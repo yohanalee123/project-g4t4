@@ -15,7 +15,7 @@
  $email = $POST['email'];
  $token = $POST['stripeToken'];
  $course_name = $POST['CourseName2'];
- $price = $POST['Price2'];
+ $price = round($POST['Price2'],2);
 
 
 
@@ -27,7 +27,7 @@ $customer = \Stripe\Customer::create(array(
 
 // Charge Customer
 $charge = \Stripe\Charge::create(array(
-  "amount" => $price,
+  "amount" => round($price,2),
   "currency" => "SGD",
   "description" => $course_name,
   "customer" => $customer->id
@@ -54,7 +54,7 @@ $transactionData = [
   'id' => $charge->id,
   'customer_id' => $charge->customer,
   'product' => $charge->description,
-  'amount' => $charge->amount,
+  'amount' => round($charge->amount,2),
   'currency' => $charge->currency,
   'status' => $charge->status,
 ];
