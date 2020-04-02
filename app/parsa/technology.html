@@ -148,9 +148,9 @@
                           //"<img class=\"img-fluid mb-4\" src=\"images/masonary-post/post-" + i + ".jpg\" alt=\"post-thumb\">" +
                           "<img class=\"img-fluid mb-4\" src= " + course.Image + ">" +
                           "<p class=\"text-uppercase mb-2\">" + course.CourseType + "</p>" +
-                          "<h4 class=\"title-border\"><a class=\"text-dark\" href=\"course_details.html" + "?id=" + course.CourseID + "\">" + course.CourseName + "</a></h4>" +
+                          "<h4 class=\"title-border\"><a class=\"text-dark\" href=\"course_details.html" + "?id=" + course.CourseID + "&name=" + course.CourseName + "&date=" + course.ListDate + "&avail=" + course.Availability +  "&mID=" + course.MentorID + "\">" + course.CourseName + "</a></h4>" +
                           "<p>" + course.CourseInfo + "</p>" +
-                          "<a href=\"course_details.html" + "?id=" + course.CourseID + "&name=" + course.CourseName + "&date=" + course.ListDate + "&avail=" + course.Availability + "\" class=\"btn btn-transparent\">read more</a>" +
+                          "<a href=\"course_details.html" + "?id=" + course.CourseID + "&name=" + course.CourseName + "&date=" + course.ListDate + "&avail=" + course.Availability +  "&mID=" + course.MentorID +"\" class=\"btn btn-transparent\">read more</a>" +
                     "</article>" +
                       "</div>";
     
