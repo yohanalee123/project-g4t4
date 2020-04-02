@@ -1,0 +1,32 @@
+{
+    "booking": [
+      {
+        "MenteeID": 154347689, 
+        "BookingID": 13221, 
+        "booking_item": [
+          { 
+            "CourseID": 97, 
+            "MentorID": 139847594,
+            "Timeslot": "Monday"
+          },
+          { 
+            "CourseID": 98, 
+            "MentorID": 112365789,
+            "Timeslot": "Tuesday"
+          }
+        ]
+      },
+      {
+        "MenteeID": 145673456, 
+        "BookingID": 13222, 
+        "booking_item": [
+          { 
+            "CourseID": 101, 
+            "MentorID": 1438294434,
+            "Timeslot": "Friday"
+          }
+        ]
+      } 
+    ]
+  }
+  
