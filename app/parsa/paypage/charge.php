@@ -17,7 +17,7 @@
  $course_name = $POST['CourseName2'];
  $price = $POST['Price2'];
 
-echo $token;
+
 
 // Create Customer In Stripe
 $customer = \Stripe\Customer::create(array(

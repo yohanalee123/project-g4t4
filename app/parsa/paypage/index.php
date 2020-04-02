@@ -119,7 +119,9 @@
       
       
     </form>
-    <button onclick="goBack()" style = "border-radius: 50px; background-color : #ff6f00; border: none;">Go Back</button>
+    <!-- <button onclick="goBack()" style = "border-radius: 50px; background-color : #ff6f00; border: none;">Go Back</button> -->
+
+    <button onclick="goBack()" class="btn btn-primary" id="webpage" style = "border-radius: 50px; border: none;" >Go Back</button>
     
 
     <script>
