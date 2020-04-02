@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="plugins/slick/slick.css">
   <!-- themefy-icon -->
   <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Main Stylesheet -->
   <link href="css/style.css" rel="stylesheet">
@@ -80,13 +81,14 @@
             <a class="nav-link text-uppercase text-dark" href="http://127.0.0.1:5003">Chatroom</a>
           </li>
           <div id='googlelogin' class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" ></div>
-          <li>
-            <button id="logout" style = "border-radius: 50px;" type="submit" class="btn btn-primary">Logout</button>
-          </li>
-        
 
-          <h3 style="text-align:center;" id = 'username'></h3>
-          <h6 style="text-align:center; height: 6px" id = 'id'></h6>
+          <li class="nav-item" style="text-align:center; padding-top: 20px; font-weight:700;" id = 'username'></li>
+
+          <li class="nav-item" style="text-align:center; height: 6px" id = 'id'></li>
+          
+          <li class="nav-item">
+            <i id="logout" type="submit" class="fa fa-power-off" style="font-size:40px; color:orange; padding-top: 10px; padding-left: 10px;"></i>
+          </li>
           <script>$('#logout').hide()</script>
           <script>
             console.log(localStorage.getItem('mID'))
