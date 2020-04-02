@@ -69,14 +69,64 @@
        <input type="text" name="first_name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="First Name">
        <input type="text" name="last_name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Last Name">
        <input type="email" name="email" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Email Address">
+       <input type="hidden" name="CourseName2" id = "CourseName2" class="form-control mb-3 StripeElement StripeElement--empty" value='' placeholder="CourseName">
+       <input type="hidden" name="Price2" id = "Price2" class="form-control mb-3 StripeElement StripeElement--empty" value='' placeholder="Price">
+       <script>
+            $(async () => {
+              // Change serviceURL to your own
+              var serviceURL = "http://127.0.0.1:5000/course";
+              try {
+                const response =
+                  await fetch(
+                    serviceURL, { method: 'GET' }
+                  );
+                const data = await response.json();
+                const urlParams = new URLSearchParams(window.location.search);
+                const courseID = urlParams.get('id');
+
+                var courses = data.courses; //the arr is in data.books of the JSON data
+
+                $('#webpage').click(function () {
+                  window.location = 'paypage\\index.php?id=' + courseID;
+                });
+
+                for (const course of courses) {
+                  if (courseID == course.CourseID) {
+                    console.log(courseID)
+                    document.getElementById('CourseName2').value = course.CourseName;
+                    document.getElementById('Price2').value = course.Price;
+                  }
+
+                }
+
+              } catch (error) {
+                // Errors when calling the service; such as network error, 
+                // service offline, etc
+                showError('There is a problem retrieving course data, please try again later.<br />' + error);
+              } // error
+            });
+
+          </script>
+       
         <div id="card-element" class="form-control">
           <!-- a Stripe Element will be inserted here. -->
         </div>
         <!-- Used to display form errors -->
         <div id="card-errors" role="alert"></div>
       </div>
-      <button style = "border-radius: 50px; background-color : #ff6f00; border: none;" > Submit Payment</button>
+      <button type = "submit" style = "border-radius: 50px; background-color : #ff6f00; border: none;" > Submit Payment</button>
+      <br>
+      
+      
     </form>
+    <button onclick="goBack()" style = "border-radius: 50px; background-color : #ff6f00; border: none;">Go Back</button>
+    
+
+    <script>
+      function goBack() {
+        window.history.back();
+    }
+    </script>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://js.stripe.com/v3/"></script>

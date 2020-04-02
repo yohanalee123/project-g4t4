@@ -14,6 +14,8 @@
  $last_name = $POST['last_name'];
  $email = $POST['email'];
  $token = $POST['stripeToken'];
+ $course_name = $POST['CourseName2'];
+ $price = $POST['Price2'];
 
 echo $token;
 
@@ -25,9 +27,9 @@ $customer = \Stripe\Customer::create(array(
 
 // Charge Customer
 $charge = \Stripe\Charge::create(array(
-  "amount" => 5000,
+  "amount" => $price,
   "currency" => "usd",
-  "description" => "Intro To React Course",
+  "description" => $course_name,
   "customer" => $customer->id
 ));
 
