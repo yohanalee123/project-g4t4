@@ -20,11 +20,11 @@
 </head>
 <body>
   <div class="container mt-4">
-    <h2>Thank you for purchasing <?php echo $product; ?></h2>
+    <h2>Thank you for booking <?php echo $product; ?></h2>
     <hr>
     <p>Your transaction ID is <?php echo $tid; ?></p>
     <p>Check your email for more info</p>
-    <p><a href="../booking_run.py" class="btn btn-light mt-2" style = "border-radius: 50px; border: none;">Click to continue</a></p>
+    <p><a href="http://127.0.0.1:5050/run" class="btn btn-light mt-2" style = "border-radius: 50px; border: none;">Click to continue</a></p>
   </div>
 </body>
 </html>

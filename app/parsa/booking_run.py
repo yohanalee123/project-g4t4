@@ -1,14 +1,14 @@
-from flask import Flask
+import flask
 import os
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 
 @app.route("/run")
 def run():
     try:   
         os.system('python booking.py')
-        return "Success"
+        return flask.redirect('http://localhost/project-g4t4/app/parsa/templates/run.html')
     except:
         return "Fail"
     
