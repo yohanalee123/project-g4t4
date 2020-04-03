@@ -51,7 +51,7 @@
   <div class="message_holder">
   <!-- jinja2 syntax to print the messages received from the MySQL db thru chat3.py-->
   {% for msg in messages %}
-    <div style="margin-left: 20%;"><b style="color: #000">{{msg.User}}</b>  {{msg.Message}}</div>
+    <div style="margin-left: 20%;"><b style="color: #000">{{msg.User}}:</b>  {{msg.Message}}</div>
   {% endfor %}
   </div><br>
 
