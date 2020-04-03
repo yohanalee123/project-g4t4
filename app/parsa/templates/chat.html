@@ -92,7 +92,7 @@
       console.log( msg ) // logs the msg transmitted back from the service/.py file for debugging purposes
       if( typeof msg.user_name !== 'undefined' ) {
         // $( 'h3' ).remove() // removes the "no messages yet" text
-        $( 'div.message_holder' ).append( '<div><b style="color: #000; margin-left: 20%;">'+msg.user_name+'</b> '+msg.message+'</div>' )
+        $( 'div.message_holder' ).append( '<div><b style="color: #000; margin-left: 20%;">'+msg.user_name+":"+'</b> '+msg.message+'</div>' )
       }
     })
   </script>
