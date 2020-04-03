@@ -51,7 +51,7 @@
   <div class="message_holder">
   <!-- jinja2 syntax to print the messages received from the MySQL db thru chat3.py-->
   {% for msg in messages %}
-    <div style="margin-left: 20%;"><b style="color: #000">{{msg.User}}:</b>  {{msg.Message}}</div>
+    <div style="margin-left: 20%;"><b style="color: #000">{{msg.User}}</b>  {{msg.Message}}</div>
   {% endfor %}
   </div><br>
 
@@ -92,7 +92,7 @@
       console.log( msg ) // logs the msg transmitted back from the service/.py file for debugging purposes
       if( typeof msg.user_name !== 'undefined' ) {
         // $( 'h3' ).remove() // removes the "no messages yet" text
-        $( 'div.message_holder' ).append( '<div><b style="color: #000; margin-left: 20%;">'+msg.user_name+'</b> '+msg.message+'</div>' )
+        $( 'div.message_holder' ).append( '<div><b style="color: #000; margin-left: 20%;">'+msg.user_name+ ": " + '</b> '+msg.message+'</div>' )
       }
     })
   </script>
