@@ -385,14 +385,15 @@
                       showError('courses list empty or undefined.')
                   } else {
                     var rows= "";
-                    CourseName2 = CourseName[0].toUpperCase() + CourseName.substr(1, CourseName.length);
-                    CourseName3 = CourseName[0].toLowerCase() + CourseName.substr(1, CourseName.length);
-                    CourseName4 = CourseName.toLowerCase();
-                    CourseName5 = CourseName.toUpperCase();
+                    // CourseName2 = CourseName[0].toUpperCase() + CourseName.substr(1, CourseName.length);
+                    // CourseName3 = CourseName[0].toLowerCase() + CourseName.substr(1, CourseName.length);
+                    // CourseName4 = CourseName.toLowerCase();
+                    // CourseName5 = CourseName.toUpperCase();
                     console.log(CourseName)
                       for (const course of courses) {
                         console.log(course)
-                        if (course['CourseName'].includes(CourseName) || course['CourseName'].includes(CourseName2) || course['CourseName'].includes(CourseName3) || course['CourseName'].includes(CourseName4) || course['CourseName'].includes(CourseName5) ) {
+                        courseLower= course['CourseName'].toLowerCase()
+                        if (courseLower.includes(CourseName)) {
                           console.log('found')
                           foundcourse = "<tbody><tr>" + 
                             "<div class=\"col-lg-4 col-sm-6 mb-5\">" +
