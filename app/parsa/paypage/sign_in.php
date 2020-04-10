@@ -22,7 +22,7 @@
 
 </head>
 <body>
- <h1 style= "text-align:center">SIGN IN FIRST!</h1>
+ <h1 style=>SIGN IN FIRST!</h1>
 
  <button id = "home" style= "border-radius: 50px; background-color : #ff6f00; border: none;">Go Home</button>
  <script>
