@@ -16,10 +16,15 @@
  $token = $POST['stripeToken'];
  $course_name = $POST['CourseName2'];
  $price = ($POST['Price2'])*100;
+ $courseID = $POST['courseID'];
+ $mentorID = $POST['mentorID'];
+ $menteeID = $POST['menteeID'];
 
-
-
-// Create Customer In Stripe
+var_dump($course_name);
+var_dump($courseID);
+var_dump($mentorID);
+var_dump($menteeID);
+//  Customer In Stripe
 $customer = \Stripe\Customer::create(array(
   "email" => $email,
   "source" => $token
@@ -66,4 +71,4 @@ $transaction = new Transaction();
 $transaction->addTransaction($transactionData);
 
 // Redirect to success
-header('Location: success.php?tid='.$charge->id.'&product='.$charge->description);
+header('Location: success.php?tid='.$charge->id.'&product='.$charge->description.'&courseID='.$courseID.'&menteeID='.$menteeID.'&mentorID='.$mentorID);

@@ -35,11 +35,10 @@ class Booking_Item:
     def __init__(self):
         self.CourseID = 0
         self.MentorID = 0
-        self.Timeslot = 0
 
     # return an booking item as a JSON object
     def json(self):
-        return {'CourseID': self.CourseID, 'MentorID': self.MentorID , 'Timeslot': self.Timeslot}
+        return {'CourseID': self.CourseID, 'MentorID': self.MentorID }
 
 def get_all():
     #Return all bookings as a JSON object
@@ -82,8 +81,7 @@ def create_booking(booking_input):
     Course_item = cart_booking['booking_item']
     for index, ci in enumerate(Course_item):
         booking["booking_item"].append({"CourseID": Course_item[index]['CourseID'],
-                                "MentorID": Course_item[index]['MentorID'],
-                                "Timeslot": Course_item[index]['Timeslot']
+                                "MentorID": Course_item[index]['MentorID']
         })
     print("The booking is",cart_booking)
     print("Processing the booking...")

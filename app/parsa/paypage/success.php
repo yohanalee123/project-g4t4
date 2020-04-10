@@ -4,9 +4,25 @@
 
     $tid = $GET['tid'];
     $product = $GET['product'];
-  } else {
-    header('Location: index.php');
-  }
+    $courseID = $GET['courseID'];
+    $mentorID = $GET['mentorID'];
+    $menteeID = $GET['menteeID'];
+
+    $array = Array (
+        "MenteeID" => $menteeID,
+        "booking_item" => Array ([
+          "CourseID" => $courseID,
+          "MentorID" => $mentorID
+        ])
+  );
+  
+  // encode array to json,
+  $json = json_encode($array, JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK);
+  file_put_contents("../new_booking.txt", $json);
+  echo $json;
+} else {
+  header('Location: index.php');
+}
 ?>
 
 <!DOCTYPE html>

@@ -1,11 +1,9 @@
-   {
-    "MenteeID":123849586,
+{
+    "MenteeID": 106904176,
     "booking_item": [
-         { 
-            "CourseID": 97, 
-            "MentorID": 139847594,
-            "Timeslot": "Monday"
-          }
+        {
+            "CourseID": 98,
+            "MentorID": 115115966
+        }
     ]
-  }
-  
+}

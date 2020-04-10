@@ -22,6 +22,15 @@
 
 </head>
 <body>
+  <script>
+    const urlParams3 = new URLSearchParams(window.location.search);
+    const signInCheck = urlParams3.get('menteeID');
+    console.log(signInCheck);
+    if (signInCheck == "null"){
+    console.log("hello")
+    window.location.replace("sign_in.php");
+  }
+  </script>
   <div class="container">
     <h2 id = "CourseName" class="my-4 text-center"> <h2 class="my-4 text-center" id = "Price"></h2>  </h2>
     
@@ -47,7 +56,7 @@
 
                 for (const course of courses) {
                   if (courseID == course.CourseID) {
-                    console.log(courseID)
+                    // console.log(courseID)
                     document.getElementById('CourseName').innerHTML = course.CourseName;
                     document.getElementById('Price').innerHTML = "$" + course.Price;
           
@@ -71,6 +80,10 @@
        <input type="email" name="email" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Email Address">
        <input type="hidden" name="CourseName2" id = "CourseName2" class="form-control mb-3 StripeElement StripeElement--empty" value=''>
        <input type="hidden" name="Price2" id = "Price2" class="form-control mb-3 StripeElement StripeElement--empty" value=''>
+       <input type="hidden" name="courseID" id = "courseID" class="form-control mb-3 StripeElement StripeElement--empty" value='' >
+       <input type="hidden" name="menteeID" id = "menteeID" class="form-control mb-3 StripeElement StripeElement--empty" value='' >
+       <input type="hidden" name="mentorID" id = "mentorID" class="form-control mb-3 StripeElement StripeElement--empty" value='' >
+       
        <script>
             $(async () => {
               // Change serviceURL to your own
@@ -92,7 +105,7 @@
 
                 for (const course of courses) {
                   if (courseID == course.CourseID) {
-                    console.log(courseID)
+                    // console.log(courseID)
                     document.getElementById('CourseName2').value = course.CourseName;
                     document.getElementById('Price2').value = course.Price;
                   }
@@ -105,7 +118,16 @@
                 showError('There is a problem retrieving course data, please try again later.<br />' + error);
               } // error
             });
+          </script>
 
+          <script>
+            const urlParams2 = new URLSearchParams(window.location.search);
+            const courseID = urlParams2.get('id');
+            const mentorID = urlParams2.get('mentorID');
+            const menteeID = urlParams2.get('menteeID');
+            document.getElementById('courseID').value = courseID;
+            document.getElementById('menteeID').value = menteeID;
+            document.getElementById('mentorID').value = mentorID;
           </script>
        
         <div id="card-element" class="form-control">
@@ -120,7 +142,7 @@
       
     </form>
     <!-- <button onclick="goBack()" style = "border-radius: 50px; background-color : #ff6f00; border: none;">Go Back</button> -->
-    <button id="goHome" style = "border-radius: 50px; border: none;">Go Back</button>
+    <button id="goHome" style = "border-radius: 50px; border: none;">Cancel</button>
     <script>
       $("#goHome").click(function() {
         document.location.href = '../';
