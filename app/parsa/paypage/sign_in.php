@@ -40,9 +40,9 @@
 
 </head>
 <body style="background-color:#ff6f00; font-family: Arial, sans-serif;">
- <h1 style="text-align:center; padding-top:50px; color:whitesmoke; padding-bottom:30px;">Please SIGN IN first<br> before proceeding</h1>
+ <h1 style="text-align:center; padding-top:50px; color:whitesmoke; padding-bottom:30px;">Please sign in to proceed.</h1>
 
- <center><button id = "home" class="btn">Back to Home for sign in</button></center>
+ <center><button id = "home" class="btn" style = "border-radius: 50px;">Back to Home</button></center>
  <script>
     $('#home').click(function () {
         window.location.replace('http://localhost/project-g4t4/app/parsa/');

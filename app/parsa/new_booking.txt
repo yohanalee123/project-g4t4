@@ -2,7 +2,7 @@
     "MenteeID": 115115966,
     "booking_item": [
         {
-            "CourseID": 123,
+            "CourseID": 98,
             "MentorID": 115115966
         }
     ]
