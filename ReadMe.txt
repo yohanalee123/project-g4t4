@@ -60,7 +60,7 @@ When adding a new course, you are required to upload an image. You can do so wit
 Additional Details
 ####################################################################
 If you would like to view to the transaction history, please use the following link: 
-	http://localhost/project-g4t4_esd/app/parsa/paypage/transaction.php
+	http://localhost/project-g4t4/app/parsa/paypage/transaction.php
 
 ********************************************************************
 Course and Team Information
