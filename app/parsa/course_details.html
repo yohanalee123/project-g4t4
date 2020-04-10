@@ -101,11 +101,13 @@
                 const data = await response.json();
                 const urlParams = new URLSearchParams(window.location.search);
                 const courseID = urlParams.get('id');
+                const mentorID = urlParams.get('mID');
+                const menteeID = localStorage.getItem('mID');
 
                 var courses = data.courses; //the arr is in data.books of the JSON data
 
                 $('#webpage').click(function () {
-                  window.location = 'paypage\\index.php?id=' + courseID;
+                  window.location = 'paypage\\index.php?id=' + courseID + "&mentorID=" + mentorID + "&menteeID=" + menteeID;
                 });
                 ID = ""
                 for (const course of courses) {
