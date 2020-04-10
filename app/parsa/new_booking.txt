@@ -1,15 +1,10 @@
-{
+   {
     "MenteeID":123849586,
     "booking_item": [
          { 
             "CourseID": 97, 
             "MentorID": 139847594,
             "Timeslot": "Monday"
-          },
-          { 
-            "CourseID": 101, 
-            "MentorID": 1438294434,
-            "Timeslot": "Friday"
           }
     ]
   }

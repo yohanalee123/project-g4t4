@@ -60,7 +60,7 @@ def create_booking(booking_input):
     status = 200
     message = "Success"
 
-    # Load the booking info from a cart (from a file in this case; can use DB too, or receive from HTTP requests)
+    # Load the booking info from a cart (a file in this case)
     try:
         with open(booking_input) as sample_booking_file:
             cart_booking = json.load(sample_booking_file)
@@ -98,18 +98,17 @@ def create_booking(booking_input):
 
     # Append the newly created booking to the existing bookings
     Booking.booking["booking"].append(booking)
-    # Increment the last_booking_id; if using a DB, DBMS can manage this
+    # Increment the last BookingID
     Booking.last_booking_id = Booking.last_booking_id + 1
-    # Write the newly created booking back to the file for permanent storage; if using a DB, this will be done by the DBMS
+    # Write the newly created booking back to the file for permanent storage
     bookings_save("booking.new.json")
-
     # Return the newly created booking when creation is succssful
     if status==200:
         print("Booking creation completed.")
         return booking
 
 def send_booking(booking):
-    #inform mentor.py for the booking 
+    #inform mentor.py for the new booking 
     # default username / password to the borker are both 'guest'
     hostname = "localhost" # default broker hostname. Web management interface default at http://localhost:15672
     port = 5672 # default messaging port.
@@ -124,14 +123,7 @@ def send_booking(booking):
     # prepare the message body content
     message = json.dumps(booking, default=str) # convert a JSON object to a string
 
-    # send the message
-    # always inform Monitoring for logging no matter if successful or not
-    channel.basic_publish(exchange=exchangename, routing_key="mentor.info", body=message)
-        # By default, the message is "transient" within the broker;
-        #  i.e., if the monitoring is offline or the broker cannot match the routing key for the message, the message is lost.
-        # If need durability of a message, need to declare the queue in the sender (see sample code below).
-
-    # inform mentor and exit, leaving it to booking_reply to handle replies
+    # send the message. Inform mentor and exit, leaving it to booking_reply to handle replies
     # Prepare the correlation id and reply_to queue and do some record keeping
     corrid = str(uuid.uuid4())
     row = {"BookingID": booking["BookingID"], "correlation_id": corrid}
@@ -153,11 +145,16 @@ def send_booking(booking):
     # close the connection to the broker
     connection.close()
 
-
 # Execute this program if it is run as a main script (not by 'import')
 if __name__ == "__main__":
     print("This is " + os.path.basename(__file__) + ": creating an booking...")
-    booking = create_booking("sample_booking.txt")
+    booking = create_booking("new_booking.txt")
     send_booking(booking)
+    
+#    Additional functions:
+
+#    Get all booking information using get_all() function
 #    print(get_all())
+
+#    Retrieve specific BookingID using find_by_booking_id function
 #    print(find_by_booking_id(13))
