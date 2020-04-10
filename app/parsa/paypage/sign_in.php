@@ -20,11 +20,29 @@
     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
     crossorigin="anonymous"></script>
 
-</head>
-<body>
- <h1 style=>SIGN IN FIRST!</h1>
+  <style>
+    .btn{
+      background-color: #fff;
+      border: none;
+      color: orange;
+      padding: 12px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
 
- <button id = "home" style= "border-radius: 50px; background-color : #ff6f00; border: none;">Go Home</button>
+    /* Darker background on mouse-over */
+    .btn:hover {
+      background-color:black;
+      color:orange;
+    }
+  </style>
+
+</head>
+<body style="background-color:#ff6f00; font-family: Arial, sans-serif;">
+ <h1 style="text-align:center; padding-top:50px; color:whitesmoke; padding-bottom:30px;">Please SIGN IN first<br> before proceeding</h1>
+
+ <center><button id = "home" class="btn">Back to Home for sign in</button></center>
  <script>
     $('#home').click(function () {
         window.location.replace('http://localhost/project-g4t4/app/parsa/');
