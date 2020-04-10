@@ -11,7 +11,6 @@ def run():
         return flask.redirect('http://localhost/project-g4t4/app/parsa/templates/run.html')
     except:
         return "Fail"
-    
 
 if __name__ == "__main__":
     app.run(port=5050, debug=True)
